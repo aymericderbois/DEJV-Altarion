@@ -3,19 +3,21 @@
 
 #include "../../Position.hh"
 
-class Button
+namespace Graphic
 {
-public:
+    class Button
+    {
+    public:
 
-    void draw() {}
+        void draw() {}
 
-private:
-    Position __position;
+    private:
+        Position __position;
 
-public:
-    void setPosition(Position __position);
-    Position getPosition() const;
-};
-
+    public:
+        void setPosition(Position __position);
+        Position getPosition() const;
+    };
+}
 #endif	/* BUTTON_HH */
 

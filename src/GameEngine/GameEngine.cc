@@ -11,7 +11,7 @@ GameEngine GameEngine::getInstance() {
 void GameEngine::run() {
     sf::Window window(sf::VideoMode(800, 600), "My window");
     while (window.isOpen()) {
-
+        
         window.display();
     }
 }
