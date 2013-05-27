@@ -9,11 +9,13 @@ namespace Game
     public:
         GameInformation();
         virtual ~GameInformation();
+        bool isInMenu();
+        bool isInGame();
     private:
         int currentPage;
     public:
-        void SetCurrentPage(int currentPage);
-        int GetCurrentPage() const;
+        void setCurrentPage(int currentPage);
+        int getCurrentPage() const;
     };
 
     enum Pages

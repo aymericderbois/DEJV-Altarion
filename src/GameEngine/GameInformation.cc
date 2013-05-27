@@ -1,17 +1,29 @@
 #include "GameInformation.hh"
 #include "GameEngine.hh"
 
-Game::GameInformation::GameInformation() {
-    this->currentPage = Game::Pages::MENU;
-}
+namespace Game
+{
 
-Game::GameInformation::~GameInformation() {
-}
+    GameInformation::GameInformation() {
+        this->currentPage = Game::Pages::MENU;
+    }
 
-void Game::GameInformation::SetCurrentPage(int currentPage) {
-    this->currentPage = currentPage;
-}
+    GameInformation::~GameInformation() {
+    }
 
-int Game::GameInformation::GetCurrentPage() const {
-    return currentPage;
+    bool GameInformation::isInMenu() {
+        return this->currentPage == Pages::MENU;
+    }
+    
+    bool GameInformation::isInGame() {
+        return this->currentPage == Pages::IN_GAME;
+    }
+
+    void GameInformation::setCurrentPage(int currentPage) {
+        this->currentPage = currentPage;
+    }
+
+    int GameInformation::getCurrentPage() const {
+        return currentPage;
+    }
 }

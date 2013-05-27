@@ -3,6 +3,6 @@
 #include "GameEngine/GameEngine.hh"
 
 int main() {
-    GameEngine::getInstance().run();
+    Game::GameEngine::getInstance().run();
     return EXIT_SUCCESS;
 }

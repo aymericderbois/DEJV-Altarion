@@ -1,6 +1,8 @@
 #ifndef MENU_HH
 #define	MENU_HH
 
+#include "../GraphicEngine/Elements/Button.hh"
+
 namespace Interface
 {
     class Menu

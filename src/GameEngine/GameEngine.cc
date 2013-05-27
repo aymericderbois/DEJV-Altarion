@@ -1,17 +1,27 @@
 #include "GameEngine.hh"
 
-GameEngine::GameEngine() {
-}
+namespace Game
+{
 
-GameEngine GameEngine::getInstance() {
-    static GameEngine instance;
-    return instance;
-}
-
-void GameEngine::run() {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
-    while (window.isOpen()) {
-        
-        window.display();
+    GameEngine::GameEngine() {
     }
+
+    GameEngine GameEngine::getInstance() {
+        static GameEngine instance;
+        return instance;
+    }
+
+    void GameEngine::run() {
+        this->__window = new sf::Window(sf::VideoMode(800, 600), "Universal Supremacy");
+        while (this->__window->isOpen()) {
+            if (this->__gameInformation.isInGame()) {
+
+            } else if (this->__gameInformation.isInMenu()) {
+
+            }
+
+            this->__window->display();
+        }
+    }
+
 }

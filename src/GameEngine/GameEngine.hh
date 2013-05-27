@@ -2,24 +2,30 @@
 #define GAMEENGINE_H
 
 #include <SFML/Window.hpp>
+#include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
 #include "../GraphicEngine/GraphicEngine.hh"
 #include "../InterfaceEngine/InterfaceEngine.hh"
 
-class GameEngine
+namespace Game
 {
-public:
+    class GameEngine
+    {
+    public:
+        static GameEngine getInstance();
+        GameEngine();
 
-    static GameEngine getInstance();
-    GameEngine();
+    public:
+        void run();
 
-public:
-    void run();
+    private:
+        WorldEngine __world;
+        GraphicEngine __graphic;
+        InterfaceEngine __interface;
+        Game::GameInformation __gameInformation;
+        sf::Window* __window;
+    };
 
-private:
-    WorldEngine __world;
-    GraphicEngine __graphic;
-    InterfaceEngine __interface;
-};
-
+}
 #endif // GAMEENGINE_H
+

@@ -4,7 +4,7 @@
 #include "Button.hh"
 #include <iostream>
 
-class TextButton : public Button
+class TextButton : public Graphic::Button
 {
 public:
 
