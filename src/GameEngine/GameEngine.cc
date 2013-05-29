@@ -15,7 +15,7 @@ namespace Game
         this->__window = new sf::Window(sf::VideoMode(800, 600), "Universal Supremacy");
         while (this->__window->isOpen()) {
             if (this->__gameInformation.isInGame()) {
-
+                
             } else if (this->__gameInformation.isInMenu()) {
 
             }

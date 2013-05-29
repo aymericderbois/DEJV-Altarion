@@ -1,9 +1,22 @@
 #include "Button.hh"
 
-void Graphic::Button::setPosition(Position __position) {
-    this->__position = __position;
-}
+namespace Graphic
+{
 
-Position Graphic::Button::getPosition() const {
-    return __position;
+    void Button::draw() {
+    }
+
+    void Button::setFont(std::string fontName) {
+        if (!this->__font.loadFromFile(fontName)) {
+            // erreur...
+        }
+    }
+
+    void Button::setPosition(Tools::Position __position) {
+        this->__position = __position;
+    }
+
+    Tools::Position Button::getPosition() const {
+        return __position;
+    }
 }
