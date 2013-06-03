@@ -13,6 +13,8 @@ namespace Game
 
     void GameEngine::run() {
         this->__window = new sf::RenderWindow(sf::VideoMode(800, 600), "Universal Supremacy");
+        this->__graphic.setWindow(this->__window);
+        
         while (this->__window->isOpen()) {
             this->handleWindowsEvents();
             
@@ -20,7 +22,6 @@ namespace Game
                 
             } else if (this->__gameInformation.isInMenu()) {
                 this->__window->clear();
-
             }
 
             this->__window->display();

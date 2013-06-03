@@ -5,7 +5,7 @@
 #include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
 #include "../GraphicEngine/GraphicEngine.hh"
-#include "../InterfaceEngine/InterfaceEngine.hh"
+#include "../Interface/Interface.hh"
 
 namespace Game
 {
@@ -22,7 +22,7 @@ namespace Game
     private:
         WorldEngine __world;
         GraphicEngine __graphic;
-        InterfaceEngine __interface;
+        //InterfaceEngine __interface;
         Game::GameInformation __gameInformation;
         sf::RenderWindow* __window;
     };
