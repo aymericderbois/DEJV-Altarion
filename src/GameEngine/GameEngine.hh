@@ -1,7 +1,7 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 #include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
 #include "../GraphicEngine/GraphicEngine.hh"
@@ -17,13 +17,14 @@ namespace Game
 
     public:
         void run();
+        void handleWindowsEvents();
 
     private:
         WorldEngine __world;
         GraphicEngine __graphic;
         InterfaceEngine __interface;
         Game::GameInformation __gameInformation;
-        sf::Window* __window;
+        sf::RenderWindow* __window;
     };
 
 }

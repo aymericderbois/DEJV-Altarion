@@ -26,3 +26,8 @@ file(GLOB_RECURSE FILES src/*)
 
 add_executable(../${MY_PROJECT_NAME} ${FILES})
 target_link_libraries(../${MY_PROJECT_NAME} ${EXTERNAL_LIBS})
+
+# Generate XCode Project
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
