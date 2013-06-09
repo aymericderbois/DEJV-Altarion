@@ -5,7 +5,6 @@
 #include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
 #include "../GraphicEngine/GraphicEngine.hh"
-#include "../Interface/Interface.hh"
 
 namespace Game
 {
@@ -20,7 +19,7 @@ namespace Game
         void handleWindowsEvents();
 
     private:
-        WorldEngine __world;
+        World::WorldEngine __world;
         GraphicEngine __graphic;
         //InterfaceEngine __interface;
         Game::GameInformation __gameInformation;
