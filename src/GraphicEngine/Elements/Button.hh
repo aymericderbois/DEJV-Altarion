@@ -1,6 +1,7 @@
 #ifndef BUTTON_HH
 #define	BUTTON_HH
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../../Tools/Position.hh"
 

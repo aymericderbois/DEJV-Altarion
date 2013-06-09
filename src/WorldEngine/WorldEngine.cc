@@ -1,4 +1,6 @@
 #include "WorldEngine.hh"
-
-WorldEngine::WorldEngine() {
+namespace World
+{
+    WorldEngine::WorldEngine() {
+    }
 }
