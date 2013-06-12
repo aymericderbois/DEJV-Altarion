@@ -1,40 +1,48 @@
+#include <stdlib.h>
+
 #include "Button.hh"
 
 namespace Graphic
 {
+    namespace GUI
+    {
 
-    void Button::init(int x, int y) {
-        
-        this->setPosition(Tools::Position (x, y));
-        this->__shape->setPosition(this->getPosition().getX(), this->getPosition().getY());
-        
-        this->__shape->setSize(sf::Vector2f(50, 30));
-        
-        this->__shape->setFillColor(sf::Color::Yellow);
-        this->__shape->setOutlineColor(sf::Color::Blue);
-        this->__shape->setOutlineThickness(3);
-    }
-    
+        void Button::init(int x, int y) {
+            this->setPosition(Tools::Position(x, y));
+            this->setFont("biting.ttf");
+            this->setTextSize(50);
+            this->setText("A Button");
+        }
 
-    void Button::setFont(std::string fontName) {
-        if (!this->__font.loadFromFile(fontName)) {
-            // erreur...
+        void Button::draw(sf::RenderWindow* window) {
+            window->draw(this->__text);
+        }
+
+        void Button::setFont(std::string fontName) {
+            std::string font = "ressources/fonts/" + fontName;
+            if (!this->__font.loadFromFile(font)) {
+                std::cout << "Impossible de charger la font " << font << std::endl;
+                exit(2);
+            }
+            this->__text.setFont(this->__font);
+        }
+
+        void Button::setPosition(Tools::Position position) {
+            this->__position = position;
+            this->__text.setPosition(position.getX(), position.getY());
+        }
+
+        Tools::Position Button::getPosition() const {
+            return __position;
+        }
+
+        void Button::setText(std::string text) {
+            this->__text.setString(text);
+        }
+
+        void Button::setTextSize(int size) {
+            this->__text.setCharacterSize(size);
         }
     }
 
-    void Button::setShape(sf::RectangleShape *shape) {
-        this->__shape = shape;
-    }
-    
-    sf::RectangleShape* Button::getShape() {
-        return this->__shape;
-    }
-    
-    void Button::setPosition(Tools::Position __position) {
-        this->__position = __position;
-    }
-
-    Tools::Position Button::getPosition() const {
-        return __position;
-    }
 }
