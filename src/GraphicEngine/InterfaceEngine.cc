@@ -13,6 +13,18 @@ InterfaceEngine::InterfaceEngine() {
 InterfaceEngine::~InterfaceEngine() {
 }
 
+void InterfaceEngine::update(Graphic::GUI::Frame frame) {
+    for (Component* c : frame.getComponents()) {
+        c->update(this->__window);
+    }
+}
+
+void InterfaceEngine::display(Graphic::GUI::Frame frame) {
+    for (Component* c : frame.getComponents()) {
+        c->draw(this->__window);
+    }
+}
+
 void InterfaceEngine::setWindow(sf::RenderWindow* window) {
     this->__window = window;
 }

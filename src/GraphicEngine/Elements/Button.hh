@@ -16,14 +16,18 @@ namespace Graphic
         public:
             void init(int x, int y);
             virtual void draw(sf::RenderWindow* window);
+            virtual void update(sf::RenderWindow* window);
+
             void setFont(std::string fontName);
 
         private:
             //sf::RectangleShape __shape;
             sf::Text __text;
             Tools::Position __position;
+            Tools::Position __size;
 
-            //bool isHover = false;
+
+            bool __isHover = false;
             sf::Font __font;
 
         public:

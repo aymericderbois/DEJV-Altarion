@@ -16,17 +16,14 @@ class InterfaceEngine
 public:
     InterfaceEngine();
     virtual ~InterfaceEngine();
-    
-    void display(Graphic::GUI::Frame frame) {
-        for(Component* c : frame.getComponents()) {
-            std::cout << "draw" << std::endl;
-            c->draw(this->__window);
-        }
-    }
+
+    void display(Graphic::GUI::Frame frame);
+    void update(Graphic::GUI::Frame frame);
+
 private:
     sf::RenderWindow* __window;
 public:
-    void setWindow(sf::RenderWindow* window);
+    void setWindow(sf::RenderWindow * window);
 };
 
 #endif	/* INTERFACEENGINE_HH */

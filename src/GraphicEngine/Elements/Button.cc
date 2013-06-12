@@ -18,6 +18,21 @@ namespace Graphic
             window->draw(this->__text);
         }
 
+        void Button::update(sf::RenderWindow* window) {
+            sf::Vector2i pos = sf::Mouse::getPosition(*window);
+            bool isXIn = pos.x > this->__position.getX() &&
+                    pos.x < this->__position.getX() + this->__size.getX();
+            bool isYIn = pos.y > this->__position.getY() &&
+                    pos.y < this->__position.getY() + this->__size.getY();
+            if (isXIn && isYIn) {
+                this->__isHover = true;
+                this->__text.setColor(sf::Color::Red);
+            } else {
+                this->__isHover = false;
+                this->__text.setColor(sf::Color::White);
+            }
+        }
+
         void Button::setFont(std::string fontName) {
             std::string font = "ressources/fonts/" + fontName;
             if (!this->__font.loadFromFile(font)) {
@@ -28,6 +43,9 @@ namespace Graphic
         }
 
         void Button::setPosition(Tools::Position position) {
+            this->__size.setX(80);
+            this->__size.setY(40);
+
             this->__position = position;
             this->__text.setPosition(position.getX(), position.getY());
         }

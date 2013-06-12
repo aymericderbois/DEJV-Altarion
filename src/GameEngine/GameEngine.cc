@@ -15,13 +15,15 @@ namespace Game
         this->__window = new sf::RenderWindow(sf::VideoMode(800, 600), "Universal Supremacy");
         this->__graphic.setWindow(this->__window);
 
+        Interface::Menu menu;
+        menu.init();
+
         while (this->__window->isOpen()) {
             this->handleWindowsEvents();
             if (this->__gameInformation.isInGame()) {
 
             } else if (this->__gameInformation.isInMenu()) {
-                Interface::Menu menu;
-                menu.init();
+                this->__graphic.getInterfaceEngine().update(menu);
                 this->__graphic.getInterfaceEngine().display(menu);
             }
 
