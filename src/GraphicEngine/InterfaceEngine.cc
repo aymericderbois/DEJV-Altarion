@@ -20,9 +20,7 @@ void InterfaceEngine::update(Graphic::GUI::Frame frame) {
 }
 
 void InterfaceEngine::display(Graphic::GUI::Frame frame) {
-    for (Component* c : frame.getComponents()) {
-        c->draw(this->__window);
-    }
+    frame.draw(this->__window);
 }
 
 void InterfaceEngine::setWindow(sf::RenderWindow* window) {

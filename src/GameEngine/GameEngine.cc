@@ -17,16 +17,17 @@ namespace Game
 
         Interface::Menu menu;
         menu.init();
-
+        int i = 0;
         while (this->__window->isOpen()) {
-            this->handleWindowsEvents();
+            this->__window->clear();
+            //this->handleWindowsEvents();
+            std::cout << i++ << std::endl;
             if (this->__gameInformation.isInGame()) {
 
             } else if (this->__gameInformation.isInMenu()) {
-                this->__graphic.getInterfaceEngine().update(menu);
                 this->__graphic.getInterfaceEngine().display(menu);
+                this->__graphic.getInterfaceEngine().update(menu);
             }
-
             this->__window->display();
         }
     }

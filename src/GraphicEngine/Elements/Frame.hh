@@ -16,9 +16,12 @@ namespace Graphic
             Frame();
             virtual ~Frame();
             void addComponent(Component* component);
-
+            void setBackground(std::string img);
+            void draw(sf::RenderWindow* window);
         private:
             std::list<Component*> __components;
+            sf::Sprite __background;
+            sf::Texture __backgroundTexture;
         public:
             std::list<Component*> getComponents() const;
         };

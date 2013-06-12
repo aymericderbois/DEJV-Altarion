@@ -24,19 +24,27 @@ namespace Graphic
                     pos.x < this->__position.getX() + this->__size.getX();
             bool isYIn = pos.y > this->__position.getY() &&
                     pos.y < this->__position.getY() + this->__size.getY();
+            
+            // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
-                this->__isHover = true;
-                this->__text.setColor(sf::Color::Red);
+                if (!this->__isHover) {
+                    this->__text.setColor(sf::Color::Red);
+                    this->__text.rotate(-5.0);
+                    this->__isHover = true;
+                }
             } else {
-                this->__isHover = false;
-                this->__text.setColor(sf::Color::White);
+                if (this->__isHover) {
+                    this->__text.setColor(sf::Color::White);
+                    this->__text.rotate(5.0);
+                    this->__isHover = false;
+                }
             }
         }
 
         void Button::setFont(std::string fontName) {
             std::string font = "ressources/fonts/" + fontName;
             if (!this->__font.loadFromFile(font)) {
-                std::cout << "Impossible de charger la font " << font << std::endl;
+                std::cerr << "Impossible de charger la font " << font << std::endl;
                 exit(2);
             }
             this->__text.setFont(this->__font);

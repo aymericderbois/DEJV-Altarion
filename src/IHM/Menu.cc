@@ -11,7 +11,7 @@ namespace Interface
 
     void Menu::init() {
         // @fixme : create menu interface here
-
+        this->setBackground("background.jpg");
         this->__startButton.init(20, 40);
         this->__optionsButton.init(20, 100);
         this->__exitButton.init(20, 160);
