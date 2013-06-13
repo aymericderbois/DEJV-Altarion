@@ -5,11 +5,13 @@
 #include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
 #include "../GraphicEngine/GraphicEngine.hh"
+#include "../GraphicEngine/GraphicEngine.hh"
+#include "../GraphicEngine/InterfaceEngine.hh"
+#include "../IHM/Menu.hh"
 
-namespace Game
-{
-    class GameEngine
-    {
+namespace Game {
+
+    class GameEngine {
     public:
         static GameEngine getInstance();
         GameEngine();

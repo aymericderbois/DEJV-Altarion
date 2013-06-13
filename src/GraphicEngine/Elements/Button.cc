@@ -39,6 +39,9 @@ namespace Graphic
                     this->__isHover = false;
                 }
             }
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover) {
+                
+            }
         }
 
         void Button::setFont(std::string fontName) {
