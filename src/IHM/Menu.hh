@@ -13,7 +13,7 @@ namespace Interface
         Menu();
         virtual ~Menu();
         void init();
-        
+        void buttonOnHover(Graphic::GUI::Button* button);
     private:
         Graphic::GUI::Button __startButton;
         Graphic::GUI::Button __optionsButton;

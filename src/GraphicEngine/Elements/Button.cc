@@ -2,10 +2,21 @@
 
 #include "Button.hh"
 
-namespace Graphic
-{
-    namespace GUI
-    {
+namespace Graphic {
+    namespace GUI {
+
+        Button::Button() {
+            this->__onClickCallBack = [](Button * b) {
+            };
+            this->__onHoverCallback = [](Button * b) {
+            };
+            this->__onUnHoverCallBack = [](Button * b) {
+            };
+        }
+
+        Button::~Button() {
+
+        }
 
         void Button::init(int x, int y) {
             this->setPosition(Tools::Position(x, y));
@@ -24,23 +35,25 @@ namespace Graphic
                     pos.x < this->__position.getX() + this->__size.getX();
             bool isYIn = pos.y > this->__position.getY() &&
                     pos.y < this->__position.getY() + this->__size.getY();
-            
+
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
+                    this->__onHoverCallback(this);
                     this->__text.setColor(sf::Color::Red);
                     this->__text.rotate(-5.0);
                     this->__isHover = true;
                 }
             } else {
                 if (this->__isHover) {
+                    this->__onHoverCallback(this);
                     this->__text.setColor(sf::Color::White);
                     this->__text.rotate(5.0);
                     this->__isHover = false;
                 }
             }
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover) {
-                
+
             }
         }
 
@@ -71,6 +84,18 @@ namespace Graphic
 
         void Button::setTextSize(int size) {
             this->__text.setCharacterSize(size);
+        }
+
+        void Button::setOnUnHover(std::function<void(Button*) > __onUnHover) {
+            this->__onUnHoverCallBack = __onUnHover;
+        }
+
+        void Button::setOnHover(std::function<void(Button*) > __onHover) {
+            this->__onHoverCallback = __onHover;
+        }
+
+        void Button::setOnClick(std::function<void(Button*) > __onClick) {
+            this->__onClickCallBack = __onClick;
         }
     }
 
