@@ -5,14 +5,13 @@
 #include <iostream>
 #include <functional>
 
-#include "Event.hh"
+#include "EventLauncher.hh"
 
 class EventListener {
 public:
     EventListener();
+    virtual void eventPerform(EventLauncher *launcher, int identifier) = 0;
     virtual ~EventListener();
-private:
-    std::map<std::string, std::function<void(Event event)> > implementedEvents;
 
 };
 

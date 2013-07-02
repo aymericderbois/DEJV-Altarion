@@ -6,16 +6,9 @@ namespace Graphic {
     namespace GUI {
 
         Button::Button() {
-            this->__onClickCallBack = [](Button * b) {
-            };
-            this->__onHoverCallback = [](Button * b) {
-            };
-            this->__onUnHoverCallBack = [](Button * b) {
-            };
         }
 
         Button::~Button() {
-
         }
 
         void Button::init(int x, int y) {
@@ -39,14 +32,13 @@ namespace Graphic {
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
-                    this->__onHoverCallback(this);
+                    this->__event->eventPerform(this, 1);
                     this->__text.setColor(sf::Color::Red);
                     this->__text.rotate(-5.0);
                     this->__isHover = true;
                 }
             } else {
                 if (this->__isHover) {
-                    this->__onHoverCallback(this);
                     this->__text.setColor(sf::Color::White);
                     this->__text.rotate(5.0);
                     this->__isHover = false;
@@ -86,16 +78,12 @@ namespace Graphic {
             this->__text.setCharacterSize(size);
         }
 
-        void Button::setOnUnHover(std::function<void(Button*) > __onUnHover) {
-            this->__onUnHoverCallBack = __onUnHover;
+        void Button::setEvent(EventListener* __event) {
+            this->__event = __event;
         }
 
-        void Button::setOnHover(std::function<void(Button*) > __onHover) {
-            this->__onHoverCallback = __onHover;
-        }
-
-        void Button::setOnClick(std::function<void(Button*) > __onClick) {
-            this->__onClickCallBack = __onClick;
+        EventListener* Button::getEvent() const {
+            return __event;
         }
     }
 

@@ -2,7 +2,7 @@
 
 namespace Interface {
 
-    Menu::Menu() {
+    Menu::Menu(){
     }
 
     Menu::~Menu() {
@@ -19,12 +19,14 @@ namespace Interface {
         this->__exitButton.setText("Exit game");
         this->__optionsButton.setText("Options");
 
-        this->__startButton.setOnHover(&Menu::buttonOnHover);
-
-
         this->addComponent(&this->__startButton);
         this->addComponent(&this->__optionsButton);
         this->addComponent(&this->__exitButton);
+        
+        this->__exitButton.setEvent(&this->__action);
+        this->__optionsButton.setEvent(&this->__action);
+        this->__startButton.setEvent(&this->__action);
+
     }
 
     void Menu::buttonOnHover(Graphic::GUI::Button* button) {
