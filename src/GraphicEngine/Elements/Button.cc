@@ -32,20 +32,17 @@ namespace Graphic {
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
-                    this->__event->eventPerform(this, 1);
-                    this->__text.setColor(sf::Color::Red);
-                    this->__text.rotate(-5.0);
                     this->__isHover = true;
+                    this->__event->onHover(this);
                 }
             } else {
                 if (this->__isHover) {
-                    this->__text.setColor(sf::Color::White);
-                    this->__text.rotate(5.0);
                     this->__isHover = false;
+                    this->__event->onUnHover(this);
                 }
             }
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover) {
-
+                this->__event->onCLick(this);
             }
         }
 
@@ -84,6 +81,26 @@ namespace Graphic {
 
         EventListener* Button::getEvent() const {
             return __event;
+        }
+
+        void Button::setIsHover(bool __isHover) {
+            this->__isHover = __isHover;
+        }
+
+        bool Button::isHover() const {
+            return __isHover;
+        }
+
+        sf::Text& Button::getText() {
+            return __text;
+        }
+
+        void Button::setId(std::string __id) {
+            this->__id = __id;
+        }
+
+        std::string Button::getId() const {
+            return __id;
         }
     }
 

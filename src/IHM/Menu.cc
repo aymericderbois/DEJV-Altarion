@@ -2,7 +2,7 @@
 
 namespace Interface {
 
-    Menu::Menu(){
+    Menu::Menu() {
     }
 
     Menu::~Menu() {
@@ -15,6 +15,10 @@ namespace Interface {
         this->__optionsButton.init(20, 100);
         this->__exitButton.init(20, 160);
 
+        this->__startButton.setId("START");
+        this->__optionsButton.setId("OPTIONS");
+        this->__exitButton.setId("EXIT");
+
         this->__startButton.setText("Start a party");
         this->__exitButton.setText("Exit game");
         this->__optionsButton.setText("Options");
@@ -22,7 +26,7 @@ namespace Interface {
         this->addComponent(&this->__startButton);
         this->addComponent(&this->__optionsButton);
         this->addComponent(&this->__exitButton);
-        
+
         this->__exitButton.setEvent(&this->__action);
         this->__optionsButton.setEvent(&this->__action);
         this->__startButton.setEvent(&this->__action);

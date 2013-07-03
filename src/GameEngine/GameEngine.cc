@@ -17,11 +17,11 @@ namespace Game
 
         Interface::Menu menu;
         menu.init();
-        int i = 0;
+        //int i = 0;
         while (this->__window->isOpen()) {
             this->__window->clear();
             //this->handleWindowsEvents();
-            std::cout << i++ << std::endl;
+            //std::cout << i++ << std::endl;
             if (this->__gameInformation.isInGame()) {
 
             } else if (this->__gameInformation.isInMenu()) {
@@ -40,5 +40,9 @@ namespace Game
             if (event.type == sf::Event::Closed)
                 this->__window->close();
         }
+    }
+
+    Game::GameInformation GameEngine::getGameInformation() const {
+        return __gameInformation;
     }
 }

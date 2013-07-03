@@ -26,6 +26,7 @@ namespace Graphic {
             //sf::RectangleShape __shape;
             sf::Text __text;
             sf::Font __font;
+            std::string __id;
 
             Tools::Position __position;
             Tools::Position __size;
@@ -40,8 +41,12 @@ namespace Graphic {
             void setTextSize(int size);
             void setEvent(EventListener* __event);
             EventListener* getEvent() const;
+            void setIsHover(bool __isHover);
+            bool isHover() const;
+            sf::Text& getText();
+            void setId(std::string __id);
+            std::string getId() const;
         };
     }
 }
 #endif	/* BUTTON_HH */
-
