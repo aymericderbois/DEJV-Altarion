@@ -15,8 +15,8 @@ namespace Interface
         this->__startButton.init(20, 40);
         this->__optionsButton.init(20, 100);
         this->__exitButton.init(20, 160);
-        this->__startButton.setText("Start a party");
-        this->__exitButton.setText("Exit game");
+        this->__startButton.setText("Launch Game");
+        this->__exitButton.setText("Exit Game");
         this->__optionsButton.setText("Options");
 
         this->addComponent(&this->__startButton);

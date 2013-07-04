@@ -12,7 +12,7 @@ namespace Game
     }
 
     void GameEngine::run() {
-        this->__window = new sf::RenderWindow(sf::VideoMode(800, 600), "Universal Supremacy");
+        this->__window = new sf::RenderWindow(sf::VideoMode(1024, 768), "Universal Supremacy");
         this->__graphic.setWindow(this->__window);
 
         Interface::Menu menu;
@@ -20,7 +20,7 @@ namespace Game
         int i = 0;
         while (this->__window->isOpen()) {
             this->__window->clear();
-            //this->handleWindowsEvents();
+            this->handleWindowsEvents(); // prevents the windows from lock-looping
             std::cout << i++ << std::endl;
             if (this->__gameInformation.isInGame()) {
 

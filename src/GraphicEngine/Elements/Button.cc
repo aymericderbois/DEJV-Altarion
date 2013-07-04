@@ -29,13 +29,13 @@ namespace Graphic
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
                     this->__text.setColor(sf::Color::Red);
-                    this->__text.rotate(-5.0);
+                    //this->__text.rotate(-5.0);
                     this->__isHover = true;
                 }
             } else {
                 if (this->__isHover) {
                     this->__text.setColor(sf::Color::White);
-                    this->__text.rotate(5.0);
+                    //this->__text.rotate(5.0);
                     this->__isHover = false;
                 }
             }
