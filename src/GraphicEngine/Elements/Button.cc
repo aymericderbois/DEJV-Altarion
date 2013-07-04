@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 #include "Button.hh"
 
 namespace Graphic {
@@ -15,11 +14,15 @@ namespace Graphic {
             this->setPosition(Tools::Position(x, y));
             this->setFont("biting.ttf");
             this->setTextSize(50);
-            this->setText("A Button");
+            this->setText("");
         }
 
         void Button::draw(sf::RenderWindow* window) {
-            window->draw(this->__text);
+            if (this->__text.getString() == "") {
+                window->draw(this->__text);
+            } else {
+                window->draw(this->__sprite);
+            }
         }
 
         void Button::update(sf::RenderWindow* window) {

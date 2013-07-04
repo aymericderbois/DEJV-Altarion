@@ -4,7 +4,9 @@
 #include <SFML/System.hpp>
 #include "../../Tools/Position.hh"
 
-class Planet {
+#include "../../GraphicEngine/Elements/Button.hh"
+
+class Planet : public Graphic::GUI::Button {
 public:
     Planet();
     virtual ~Planet();

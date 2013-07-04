@@ -23,11 +23,14 @@ namespace Graphic {
             void setFont(std::string fontName);
 
         private:
-            //sf::RectangleShape __shape;
+            // For text button
             sf::Text __text;
             sf::Font __font;
             std::string __id;
 
+            // For image button
+            sf::Sprite __sprite;
+            
             Tools::Position __position;
             Tools::Position __size;
             bool __isHover = false;
