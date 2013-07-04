@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
+set(MY_PROJECT_NAME "UniversalSupremacy")
 project(${MY_PROJECT_NAME} CXX)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -14,7 +15,6 @@ ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	set(EXTERNAL_LIBS ${SFML_LIBRARIES} "GL")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
-set(MY_PROJECT_NAME "UniversalSupremacy")
 
 # DO NOT TOUCH # touched it anyway
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
