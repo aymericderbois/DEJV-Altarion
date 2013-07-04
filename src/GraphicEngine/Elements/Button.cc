@@ -35,6 +35,7 @@ namespace Graphic {
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
+
                     this->__isHover = true;
                     this->__event->onHover(this);
                 }

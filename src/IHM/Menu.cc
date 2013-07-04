@@ -15,6 +15,7 @@ namespace Interface {
         this->__optionsButton.init(20, 100);
         this->__exitButton.init(20, 160);
 
+
         this->__startButton.setId("START");
         this->__optionsButton.setId("OPTIONS");
         this->__exitButton.setId("EXIT");
