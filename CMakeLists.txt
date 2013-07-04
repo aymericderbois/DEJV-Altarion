@@ -16,18 +16,21 @@ ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 set(MY_PROJECT_NAME "UniversalSupremacy")
 
-# DO NOT TOUCH 
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -std=c++11 -pedantic")
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -std=c++11 -pedantic -g")
-set(LINK_FLAGS_RELEASE "-Wall -Wextra -Werror -std=c++11 -pedantic")
-set(LINK_FLAGS_DEBUG "-Wall -Wextra -Werror -std=c++11 -pedantic -g")
+# DO NOT TOUCH # touched it anyway
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -std=c++11 -stdlib=libc++ -pedantic")
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -std=c++11 -stdlib=libc++ -pedantic -g")
+	set(LINK_FLAGS_RELEASE "-Wall -Wextra -Werror -std=c++11 -stdlib=libc++ -pedantic")
+	set(LINK_FLAGS_DEBUG "-Wall -Wextra -Werror -std=c++11 -stdlib=libc++ -pedantic -g")
+ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -std=c++11 -pedantic")
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -std=c++11 -pedantic -g")
+	set(LINK_FLAGS_RELEASE "-Wall -Wextra -Werror -std=c++11 -pedantic")
+	set(LINK_FLAGS_DEBUG "-Wall -Wextra -Werror -std=c++11 -pedantic -g")
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 file(GLOB_RECURSE FILES src/*)
 
 add_executable(../${MY_PROJECT_NAME} ${FILES})
 target_link_libraries(../${MY_PROJECT_NAME} ${EXTERNAL_LIBS})
 
-# Generate XCode Project
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-	
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
