@@ -2,10 +2,9 @@
 #define GAMEENGINE_H
 
 #include <SFML/Graphics.hpp>
+#include "../GraphicEngine/GraphicEngine.hh"
 #include "GameInformation.hh"
 #include "../WorldEngine/WorldEngine.hh"
-#include "../GraphicEngine/GraphicEngine.hh"
-#include "../GraphicEngine/GraphicEngine.hh"
 #include "../GraphicEngine/InterfaceEngine.hh"
 #include "../IHM/Menu.hh"
 
@@ -19,6 +18,7 @@ namespace Game {
     public:
         void run();
         void handleWindowsEvents();
+        Game::GameInformation getGameInformation() const;
 
     private:
         World::WorldEngine __world;

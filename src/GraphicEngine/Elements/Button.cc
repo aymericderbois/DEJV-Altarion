@@ -2,10 +2,14 @@
 
 #include "Button.hh"
 
-namespace Graphic
-{
-    namespace GUI
-    {
+namespace Graphic {
+    namespace GUI {
+
+        Button::Button() {
+        }
+
+        Button::~Button() {
+        }
 
         void Button::init(int x, int y) {
             this->setPosition(Tools::Position(x, y));
@@ -24,23 +28,22 @@ namespace Graphic
                     pos.x < this->__position.getX() + this->__size.getX();
             bool isYIn = pos.y > this->__position.getY() &&
                     pos.y < this->__position.getY() + this->__size.getY();
-            
+
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
-                    this->__text.setColor(sf::Color::Red);
-                    //this->__text.rotate(-5.0);
+
                     this->__isHover = true;
+                    this->__event->onHover(this);
                 }
             } else {
                 if (this->__isHover) {
-                    this->__text.setColor(sf::Color::White);
-                    //this->__text.rotate(5.0);
                     this->__isHover = false;
+                    this->__event->onUnHover(this);
                 }
             }
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover) {
-                
+                this->__event->onCLick(this);
             }
         }
 
@@ -71,6 +74,34 @@ namespace Graphic
 
         void Button::setTextSize(int size) {
             this->__text.setCharacterSize(size);
+        }
+
+        void Button::setEvent(EventListener* __event) {
+            this->__event = __event;
+        }
+
+        EventListener* Button::getEvent() const {
+            return __event;
+        }
+
+        void Button::setIsHover(bool __isHover) {
+            this->__isHover = __isHover;
+        }
+
+        bool Button::isHover() const {
+            return __isHover;
+        }
+
+        sf::Text& Button::getText() {
+            return __text;
+        }
+
+        void Button::setId(std::string __id) {
+            this->__id = __id;
+        }
+
+        std::string Button::getId() const {
+            return __id;
         }
     }
 
