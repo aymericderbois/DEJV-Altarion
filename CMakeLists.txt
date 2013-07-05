@@ -32,8 +32,51 @@ ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	set(LINK_FLAGS_DEBUG "-Wall -Wextra -Werror -std=c++11 -pedantic -g")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
-file(GLOB_RECURSE FILES src/*)
+# file(GLOB_RECURSE FILES src/*)
 
-add_executable(../${MY_PROJECT_NAME} ${FILES})
+file(GLOB_RECURSE ActionEngineFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ActionEngine/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ActionEngine/*.hh
+)
+
+file(GLOB_RECURSE GameEngineFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameEngine/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameEngine/*.hh
+)
+
+file(GLOB_RECURSE GraphicEngineFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GraphicEngine/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GraphicEngine/*.hh
+)
+
+file(GLOB_RECURSE IHMFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/IHM/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/IHM/*.hh
+)
+
+file(GLOB_RECURSE libsFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/libs/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/libs/*.hh
+)
+
+file(GLOB_RECURSE ToolsFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/*.hh
+)
+
+file(GLOB_RECURSE WorldEngineFiles
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/WorldEngine/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/WorldEngine/*.hh
+)
+
+source_group(ActionEngine FILES ${ActionEngineFiles})
+source_group(GraphicEngine FILES ${GraphicEngineFiles})
+source_group(GameEngine FILES ${GameEngineFiles})
+source_group(IHM FILES ${IHMFiles})
+source_group(libs FILES ${libsFiles})
+source_group(Tools FILES ${ToolsFiles})
+source_group(WorldEngine FILES ${WorldEngineFiles})
+
+add_executable(../${MY_PROJECT_NAME} src/main.cc ${ActionEngineFiles} ${GraphicEngineFiles} ${GameEngineFiles} ${IHMFiles} ${libsFiles} ${ToolsFiles} ${WorldEngineFiles})
 target_link_libraries(../${MY_PROJECT_NAME} ${EXTERNAL_LIBS})
 
