@@ -13,6 +13,14 @@ Planet::Planet()
     this->__shipyards       = 0;
     
     this->__fleet           = NULL;
+    
+    std::stringstream name;
+    name << "P";
+    name << rand() % 9 + 0;
+    name << "X";
+    name << rand() % 999 + 0;
+    
+    this->setName(name.str());
 }
 
 Planet::~Planet()
@@ -23,22 +31,33 @@ Planet::~Planet()
     }
 }
 
+
+std::string     Planet::getName()
+{
+    return this->__name;
+}
+
+void            Planet::setName(std::string name)
+{
+    this->__name = name;
+}
+
 Tools::Position Planet::GetPosition() const
 {
     return __position;
 }
 
-void Planet::SetPosition(Tools::Position position)
+void            Planet::SetPosition(Tools::Position position)
 {
     this->__position = position;
 }
 
-sf::Int32 Planet::GetSize() const
+sf::Int32       Planet::GetSize() const
 {
     return __size;
 }
 
-void Planet::SetSize(sf::Int32 size)
+void            Planet::SetSize(sf::Int32 size)
 {
     this->__size = size;
 }

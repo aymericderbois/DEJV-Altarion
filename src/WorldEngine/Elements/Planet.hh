@@ -1,6 +1,8 @@
 #ifndef PLANET_HH
 #define	PLANET_HH
 
+#include <sstream>
+
 #include <SFML/System.hpp>
 #include "../../Tools/Position.hh"
 
@@ -27,10 +29,14 @@ private:
     Fleet*          __fleet; // might be changed into a list in the future
     
     // Display
+    std::string     __name;
     sf::Int32       __size;
     Tools::Position __position;
     
 public:
+    std::string     getName();
+    void            setName(std::string name);
+    
     Tools::Position GetPosition() const;
     void            SetPosition(Tools::Position position);
     

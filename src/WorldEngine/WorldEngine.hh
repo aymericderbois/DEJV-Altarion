@@ -11,6 +11,9 @@ namespace World
     {
     public:
         WorldEngine();
+        ~WorldEngine();
+        void    generateWorld(int   nbPlanets);
+        
     private:
         std::list<Planet*> __planets;
     };
