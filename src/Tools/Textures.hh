@@ -8,8 +8,9 @@
 class Textures {
 public:
     virtual ~Textures();
-    Textures getInstance();
+    static Textures getInstance();
     void loadAllTextures();
+    sf::Texture* get(std::string name);
 private:
     Textures();
     std::map<std::string, sf::Texture*> __textures;
