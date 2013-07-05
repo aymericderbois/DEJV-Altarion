@@ -20,7 +20,7 @@ namespace Interface {
         this->__optionsButton.setId("OPTIONS");
         this->__exitButton.setId("EXIT");
 
-        this->__startButton.setText("Start a party");
+        this->__startButton.setText("Launch Game");
         this->__exitButton.setText("Exit game");
         this->__optionsButton.setText("Options");
 

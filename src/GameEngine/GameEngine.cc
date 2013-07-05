@@ -24,7 +24,6 @@ namespace Game
         while (this->__window->isOpen()) {
             this->__window->clear();
             this->handleWindowsEvents(); // prevents the windows from lock-looping
-            //std::cout << i++ << std::endl;
             if (this->__gameInformation->isInGame()) {
                 this->__graphic.getInterfaceEngine().display(world);
                 this->__graphic.getInterfaceEngine().update(world);
