@@ -23,8 +23,8 @@ namespace World
         
         for (Planet* planet : planets)
         {
-            if (((planet->GetPosition().getX() < x + padding) && (planet->GetPosition().getX() < x - padding)) &&
-                ((planet->GetPosition().getY() < y + padding) && (planet->GetPosition().getY() < y - padding)))
+            if (((planet->GetPosition().getX() < x + padding) && (planet->GetPosition().getX() > x - padding)) &&
+                ((planet->GetPosition().getY() < y + padding) && (planet->GetPosition().getY() > y - padding)))
                 return false;
         }
         return true;
