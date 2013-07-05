@@ -1,9 +1,11 @@
 #include "GameEngine.hh"
+#include "../WorldEngine/WorldEngine.hh"
 
 namespace Game
 {
 
     GameEngine::GameEngine() {
+        this->__gameInformation = new GameInformation();
     }
 
     GameEngine GameEngine::getInstance() {
@@ -16,15 +18,17 @@ namespace Game
         this->__graphic.setWindow(this->__window);
 
         Interface::Menu menu;
+        World::WorldEngine world;
         menu.init();
         //int i = 0;
         while (this->__window->isOpen()) {
             this->__window->clear();
             this->handleWindowsEvents(); // prevents the windows from lock-looping
             //std::cout << i++ << std::endl;
-            if (this->__gameInformation.isInGame()) {
-
-            } else if (this->__gameInformation.isInMenu()) {
+            if (this->__gameInformation->isInGame()) {
+                this->__graphic.getInterfaceEngine().display(world);
+                this->__graphic.getInterfaceEngine().update(world);
+            } else if (this->__gameInformation->isInMenu()) {
                 this->__graphic.getInterfaceEngine().display(menu);
                 this->__graphic.getInterfaceEngine().update(menu);
             }
@@ -42,7 +46,7 @@ namespace Game
         }
     }
 
-    Game::GameInformation GameEngine::getGameInformation() const {
+    Game::GameInformation* GameEngine::getGameInformation() {
         return __gameInformation;
     }
 }

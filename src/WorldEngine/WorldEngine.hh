@@ -2,11 +2,12 @@
 #define WORLDENGINE_H
 
 #include <list>
+#include "../GraphicEngine/Elements/Frame.hh"
 #include "Elements/Planet.hh"
 
 namespace World
 {
-    class WorldEngine
+    class WorldEngine : public Graphic::GUI::Frame
     {
     public:
         WorldEngine();

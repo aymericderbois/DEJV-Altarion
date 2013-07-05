@@ -19,8 +19,10 @@ void MenuAction::onCLick(EventLauncher *launcher) {
     
     if (button->getId() == "EXIT") exit(2);
     
-    if (button->getId() == "START")
-        Game::GameEngine::getInstance().getGameInformation().setCurrentPage(Game::IN_GAME);
+    if (button->getId() == "START") {
+        Game::GameEngine::getInstance().getGameInformation()->setCurrentPage(Game::IN_GAME);
+        std::cout << Game::GameEngine::getInstance().getGameInformation()->getCurrentPage() << std::endl;
+    }
 
 }
 

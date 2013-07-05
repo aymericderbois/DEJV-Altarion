@@ -18,7 +18,7 @@ namespace Graphic {
         }
 
         void Button::draw(sf::RenderWindow* window) {
-            if (this->__text.getString() == "") {
+            if (this->__text.getString() != "") {
                 window->draw(this->__text);
             } else {
                 window->draw(this->__sprite);

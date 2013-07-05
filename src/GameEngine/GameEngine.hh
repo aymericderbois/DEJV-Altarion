@@ -18,13 +18,13 @@ namespace Game {
     public:
         void run();
         void handleWindowsEvents();
-        Game::GameInformation getGameInformation() const;
+        Game::GameInformation* getGameInformation();
 
     private:
         World::WorldEngine __world;
         GraphicEngine __graphic;
         //InterfaceEngine __interface;
-        Game::GameInformation __gameInformation;
+        Game::GameInformation* __gameInformation;
         sf::RenderWindow* __window;
     };
 
