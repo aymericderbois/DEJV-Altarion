@@ -8,11 +8,14 @@
 
 class Fleet
 {
+public:
+    Fleet();
+    ~Fleet();
 private:
     std::list<Ship> __ships;
     
 public:
-    void            addShip();
+    void            addShip(Ship ship);
     std::list<Ship> getShips();
 };
 

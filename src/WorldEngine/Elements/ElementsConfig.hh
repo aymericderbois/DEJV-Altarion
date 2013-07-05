@@ -34,5 +34,8 @@
 #define CRUISER_COST_MINERALS   8000
 #define CRUISER_COST_GAS        6000
 #define CRUISER_BUILD_TIME      500
+#define CRUISER_ARMOR           500
+#define CRUISER_SHIELD          250
+#define CRUISER_STRENGTH        200
 
 #endif /* ELEMENTS_CONFIG_HH */
