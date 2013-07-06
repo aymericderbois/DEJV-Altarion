@@ -16,7 +16,7 @@ namespace Game {
         GameEngine();
 
     public:
-        void run();
+        void run(bool startInGame);
         void handleWindowsEvents();
         Game::GameInformation* getGameInformation();
 

@@ -14,11 +14,15 @@ namespace Game
         return instance;
     }
 
-    void GameEngine::run()
+    void GameEngine::run(bool startInGame)
     {
         this->__window = new sf::RenderWindow(sf::VideoMode(1024, 768), "Universal Supremacy");
         this->__graphic.setWindow(this->__window);
 
+        if (startInGame) {
+            this->__gameInformation->setCurrentPage(Pages::IN_GAME);
+        }
+        
         Interface::Menu menu;
         //World::WorldEngine world;
         World::WorldEngine world;
