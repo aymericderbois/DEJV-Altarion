@@ -25,7 +25,11 @@ namespace World {
         this->__topbar.setSize(Tools::Position(1024, 40));
         this->__topbar.setPosition(Tools::Position(0, 0));
         
+        this->__sidebar.setSize(Tools::Position(300, 768));
+        this->__sidebar.setPosition(Tools::Position(768, 40));
+        
         this->addComponent(&this->__topbar);
+        this->addComponent(&this->__sidebar);
     }
       
     void WorldEngine::generateWorld(int nbPlanets) {

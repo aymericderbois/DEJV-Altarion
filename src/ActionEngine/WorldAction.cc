@@ -14,7 +14,7 @@ void WorldAction::onCLick(EventLauncher *launcher) {
 }
 
 void WorldAction::onHover(EventLauncher *launcher) {
-    Graphic::GUI::Button *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
+    Graphic::GUI::Button    *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
     std::cout << "On hover" << std::endl;
 
 }

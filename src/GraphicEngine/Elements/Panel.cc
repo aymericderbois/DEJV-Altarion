@@ -13,6 +13,7 @@ namespace Graphic {
             sf::RectangleShape rectangle(sf::Vector2f(
                 this->__size.getX(), this->__size.getY()
             ));
+            rectangle.setPosition(this->__position.getX(), this->__position.getY());
             window->draw(rectangle);
             for (Component* c : this->__components) {
                 c->draw(window);

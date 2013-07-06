@@ -38,11 +38,11 @@ void Planet::setName(std::string name) {
 }
 
 std::string Planet::getTextureName() {
-    return this->__name;
+    return this->__textureName;
 }
 
 void Planet::setTextureName(std::string texturename) {
-    this->__name = texturename;
+    this->__textureName = texturename;
 }
 
 std::string     chooseTexture()
