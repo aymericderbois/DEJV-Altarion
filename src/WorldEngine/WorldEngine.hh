@@ -16,6 +16,7 @@ namespace World
         WorldEngine();
         ~WorldEngine();
         void initBar();
+        void initContextualHUD();
         void generateWorld(int nbPlanets);
         void init();
     private:
