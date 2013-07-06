@@ -64,16 +64,17 @@ namespace World {
     }
       
     void WorldEngine::generateWorld(int nbPlanets) {
+        srand (time(NULL));
         for (int i = 0; i < nbPlanets; i++) {
             Tools::Position position;
             Planet *planet = new Planet();
 
-            int x = rand() % 748 + 40;
-            int y = rand() % 748 + 40;
+            int x = rand() % 708 + 50;
+            int y = rand() % 708 + 50;
 
             while (!choosePosition(x, y, this->__planets)) {
-                x = rand() % 748 + 40;
-                y = rand() % 748 + 40;
+                x = rand() % 708 + 50;
+                y = rand() % 708 + 50;
             }
 
             position.setX(x);
