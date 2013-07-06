@@ -30,8 +30,8 @@ namespace World {
     
     void    WorldEngine::initContextualHUD()
     {
-        this->__sidebar.setSize(Tools::Position(300, 768));
-        this->__sidebar.setPosition(Tools::Position(768, 40));
+        this->__sidebar.setSize(Tools::Position(300, 748));
+        this->__sidebar.setPosition(Tools::Position(748, 40));
         
         this->addComponent(&this->__sidebar);
     }
@@ -41,12 +41,12 @@ namespace World {
             Tools::Position position;
             Planet *planet = new Planet();
 
-            int x = rand() % 674 + 20;
-            int y = rand() % 674 + 20;
+            int x = rand() % 748 + 40;
+            int y = rand() % 748 + 40;
 
             while (!choosePosition(x, y, this->__planets)) {
-                x = rand() % 674 + 20;
-                y = rand() % 674 + 20;
+                x = rand() % 748 + 40;
+                y = rand() % 748 + 40;
             }
 
             position.setX(x);
