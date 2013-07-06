@@ -30,4 +30,9 @@ void TopBar::init() {
     ships->setIcon("ship");
     this->addComponent(ships);
 
+    Graphic::GUI::Ressource *earth = new Graphic::GUI::Ressource();
+    earth->setPosition(Tools::Position(300, 5));
+    earth->setValue("0");
+    earth->setIcon("earth");
+    this->addComponent(earth);
 }
