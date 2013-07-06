@@ -14,7 +14,8 @@ void WorldAction::onCLick(EventLauncher *launcher) {
     
     if (planet != 0) {
         // set up contextual menu with clicked content
-        updateContextMenuContent(planet);
+        std::cout << "building context for planet: " << planet->getName() << std::endl;
+        this->__world->updateContext(planet);
     }
     
     std::cout << "On click" << std::endl;
@@ -39,11 +40,4 @@ void WorldAction::setWorld(World::WorldEngine* __world) {
 
 World::WorldEngine* WorldAction::getWorld() const {
     return __world;
-}
-
-void            WorldAction::updateContextMenuContent(Planet    *planet)
-{
-    std::cout << "building context for planet: " << planet->getName() << std::endl;
-    
-    
 }

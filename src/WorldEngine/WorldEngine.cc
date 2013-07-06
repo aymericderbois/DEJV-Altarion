@@ -37,6 +37,12 @@ namespace World {
         this->__sidebar.setBackgroundColor(sf::Color(38, 43, 57));
         this->__sidebar.setOutlineColor(sf::Color(29, 33, 46));
         
+        Graphic::GUI::PanelHeader *planetInfo = new Graphic::GUI::PanelHeader();
+        planetInfo->setPlanetIcon("");
+        planetInfo->setPlanetName("");
+        this->__sidebar.setPanelHeader(&(*planetInfo));
+        this->__sidebar.addComponent(&(*planetInfo));
+        
         this->addComponent(&this->__sidebar);
     }
       
@@ -89,5 +95,11 @@ namespace World {
             planet->setEvent(&this->__action);
             this->addComponent(&(*planet));
         }
+    }
+    
+    void WorldEngine::updateContext(Planet *planet)
+    {
+        this->__sidebar.getPanelHeader()->setPlanetIcon(planet->getTextureName());
+        this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
     }
 }

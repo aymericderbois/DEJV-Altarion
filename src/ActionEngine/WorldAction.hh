@@ -5,8 +5,6 @@
 #include "../libs/Event/EventListener.hh"
 #include "../libs/Event/EventLauncher.hh"
 
-#include "../WorldEngine/Elements/Planet.hh"
-
 namespace World {
     class WorldEngine;
 }
@@ -19,8 +17,6 @@ public:
     void onCLick(EventLauncher *launcher);
     void onHover(EventLauncher *launcher);
     void onUnHover(EventLauncher *launcher);
-    
-    void updateContextMenuContent(Planet   *planet);
 private:
     World::WorldEngine* __world;
     
