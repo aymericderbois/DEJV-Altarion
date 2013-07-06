@@ -22,19 +22,19 @@ int Player::getNbPlanets() const {
     return __nbPlanets;
 }
 
-void Player::setNbGas(int __nbGas) {
+void Player::setNbGas(float __nbGas) {
     this->__nbGas = __nbGas;
 }
 
-int Player::getNbGas() const {
+float Player::getNbGas() const {
     return __nbGas;
 }
 
-void Player::setNbOre(int __nbOre) {
+void Player::setNbOre(float __nbOre) {
     this->__nbOre = __nbOre;
 }
 
-int Player::getNbOre() const {
+float Player::getNbOre() const {
     return __nbOre;
 }
 

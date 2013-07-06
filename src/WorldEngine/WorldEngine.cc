@@ -1,4 +1,5 @@
 #include "WorldEngine.hh"
+#include <math.h> 
 
 namespace World {
 
@@ -47,6 +48,8 @@ namespace World {
             if (pos->getY() != dest->getY())
                 pos->setY(pos->getY() + directionY);
         }
+        
+        updateTopBarValues();
     }
 
     bool choosePosition(int x, int y, std::vector<Planet*> planets) {
@@ -61,29 +64,10 @@ namespace World {
     }
 
     void WorldEngine::initBar() {
-        
-        int nbPlanets = 0;
-        int nbShips = 0;
-        
-        for (auto planet : this->__planets) {
-            if ((planet->getOwner() != NULL) && (planet->getOwner()->getId() == this->__player.getId())) {
-                nbPlanets++;
-                if ((planet->getFleet() != NULL))
-                    nbShips += planet->getFleet()->getShips().size();
-            }
-        }
-        this->__player.setNbPlanets(nbPlanets);
-        this->__player.setNbPlanets(nbShips);
-        
         this->__topbar.init();
 
-        this->__topbar.getGas()->setValue(std::to_string(this->__player.getNbGas()));
-        this->__topbar.getOre()->setValue(std::to_string(this->__player.getNbOre()));
+        this->updateTopBarValues();
         
-        this->__player.setNbPlanets(nbPlanets);
-        
-        this->__topbar.getEarth()->setValue(std::to_string(this->__player.getNbPlanets()));
-        this->__topbar.getShips()->setValue(std::to_string(this->__player.getNbShip()));
         this->addComponent(&this->__topbar);
     }
 
@@ -193,5 +177,36 @@ namespace World {
 
     Player WorldEngine::getPlayer() const {
         return __player;
+    }
+    
+    void WorldEngine::updateTopBarValues()
+    {
+        int nbPlanets = 0;
+        int nbShips = 0;
+        
+        float gasRevenue = 0.f;
+        float oreRevenue = 0.f;
+        
+        for (auto planet : this->__planets) {
+            if ((planet->getOwner() != NULL) && (planet->getOwner()->getId() == this->__player.getId())) {
+                nbPlanets++;
+                gasRevenue += planet->getGasRevenue();
+                oreRevenue += planet->getMineralsRevenue();
+                
+                if ((planet->getFleet() != NULL))
+                    nbShips += planet->getFleet()->getShips().size();
+            }
+        }
+        
+        this->__player.setNbPlanets(nbPlanets);
+        this->__player.setNbPlanets(nbShips);
+        this->__player.setNbGas(this->__player.getNbGas() + (gasRevenue * 0.0001f));
+        this->__player.setNbOre(this->__player.getNbOre() + (oreRevenue * 0.0001f));
+        
+        this->__topbar.getGas()->setValue(std::to_string((int) floor(this->__player.getNbGas() + 0.5)));
+        this->__topbar.getOre()->setValue(std::to_string((int) floor(this->__player.getNbOre() + 0.5)));
+        
+        this->__topbar.getEarth()->setValue(std::to_string(this->__player.getNbPlanets()));
+        this->__topbar.getShips()->setValue(std::to_string(this->__player.getNbShip()));
     }
 }

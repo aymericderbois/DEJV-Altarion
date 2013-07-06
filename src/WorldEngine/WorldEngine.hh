@@ -38,6 +38,7 @@ namespace World
         void updateContext(Planet   *planet);
         void setPlayer(Player __player);
         Player getPlayer() const;
+        void updateTopBarValues();
     };
 }
 #endif // WORLDENGINE_H

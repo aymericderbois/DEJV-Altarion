@@ -8,20 +8,24 @@ public:
     Player();
     virtual ~Player();
 private:
-    int __nbOre = BASE_STOCK_MINERALS; // Minerais
-    int __nbGas = BASE_STOCK_GAS;
+    float __nbOre = BASE_STOCK_MINERALS; // Minerais
+    float __nbGas = BASE_STOCK_GAS;
     int __nbPlanets = 0;
     int __nbShip = 0;
     int __id;
 public:
     void setNbShip(int __nbShip);
     int getNbShip() const;
+    
     void setNbPlanets(int __nbPlanets);
     int getNbPlanets() const;
-    void setNbGas(int __nbGas);
-    int getNbGas() const;
-    void setNbOre(int __nbOre);
-    int getNbOre() const;
+    
+    void setNbGas(float __nbGas);
+    float getNbGas() const;
+    
+    void setNbOre(float __nbOre);
+    float getNbOre() const;
+    
     void setId(int __id);
     int getId() const;
 };
