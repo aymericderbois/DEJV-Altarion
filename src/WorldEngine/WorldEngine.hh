@@ -4,6 +4,7 @@
 #include <vector>
 #include "../GraphicEngine/Elements/Frame.hh"
 #include "Elements/Planet.hh"
+#include "../ActionEngine/WorldAction.hh"
 
 namespace World
 {
@@ -15,6 +16,7 @@ namespace World
         void generateWorld(int nbPlanets);
         void init();
     private:
+        WorldAction __action;
         std::vector<Planet*> __planets;
     };
 }

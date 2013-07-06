@@ -49,6 +49,7 @@ namespace World {
     }
 
     void WorldEngine::init() {
+        this->__action.setWorld(this);
         // @fixme : generate map here
         this->generateWorld(10);
         //Planet* planet = new Planet();
@@ -59,6 +60,7 @@ namespace World {
         // @endFixme
 
         for (Planet* planet : this->__planets) {
+            planet->setEvent(&this->__action);
             this->addComponent(&(*planet));
         }
     }
