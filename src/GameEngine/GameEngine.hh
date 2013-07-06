@@ -12,7 +12,7 @@ namespace Game {
 
     class GameEngine {
     public:
-        static GameEngine getInstance();
+        static GameEngine& getInstance();
         GameEngine();
 
     public:

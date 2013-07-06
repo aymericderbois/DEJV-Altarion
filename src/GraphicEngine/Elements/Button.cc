@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "Button.hh"
+#include "../../Tools/Textures.hh"
 
 namespace Graphic {
     namespace GUI {
@@ -35,7 +36,6 @@ namespace Graphic {
             // @fixme Deplacer les traitements ci-dessous dans un event !
             if (isXIn && isYIn) {
                 if (!this->__isHover) {
-
                     this->__isHover = true;
                     this->__event->onHover(this);
                 }
@@ -65,8 +65,18 @@ namespace Graphic {
 
             this->__position = position;
             this->__text.setPosition(position.getX(), position.getY());
+            this->__sprite.setPosition(position.getX(), position.getY());
         }
 
+        void Button::setTexture(std::string name) {
+            sf::Texture* texture = Textures::getInstance().get(name);
+            this->__sprite.setTexture(*texture);
+        }
+        
+        void Button::setSpriteRatio(float ratio) {
+            this->__sprite.scale(sf::Vector2f(ratio, ratio));
+        }
+        
         Tools::Position Button::getPosition() const {
             return __position;
         }
@@ -105,6 +115,14 @@ namespace Graphic {
 
         std::string Button::getId() const {
             return __id;
+        }
+
+        void Button::setSize(Tools::Position __size) {
+            this->__size = __size;
+        }
+
+        Tools::Position Button::getSize() const {
+            return __size;
         }
     }
 

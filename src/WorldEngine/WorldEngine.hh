@@ -1,7 +1,7 @@
 #ifndef WORLDENGINE_H
 #define WORLDENGINE_H
 
-#include <list>
+#include <vector>
 #include "../GraphicEngine/Elements/Frame.hh"
 #include "Elements/Planet.hh"
 
@@ -12,10 +12,10 @@ namespace World
     public:
         WorldEngine();
         ~WorldEngine();
-        void    generateWorld(int   nbPlanets);
-        
+        void generateWorld(int nbPlanets);
+        void init();
     private:
-        std::list<Planet*> __planets;
+        std::vector<Planet*> __planets;
     };
 }
 #endif // WORLDENGINE_H

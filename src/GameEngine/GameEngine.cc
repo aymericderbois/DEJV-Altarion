@@ -9,8 +9,7 @@ namespace Game
         this->__gameInformation = new GameInformation();
     }
 
-    GameEngine GameEngine::getInstance()
-    {
+    GameEngine& GameEngine::getInstance() {
         static GameEngine instance;
         return instance;
     }
@@ -22,20 +21,23 @@ namespace Game
 
         Interface::Menu menu;
         //World::WorldEngine world;
+        World::WorldEngine world;
+        bool isFirstLoopOnWorld = true;
         menu.init();
         //int i = 0;
         while (this->__window->isOpen())
         {
             this->__window->clear();
             this->handleWindowsEvents(); // prevents the windows from lock-looping
-            
-            if (this->__gameInformation->isInGame())
-            {
-                this->__graphic.getInterfaceEngine().display(this->__world);
-                this->__graphic.getInterfaceEngine().update(this->__world);
-            }
-            else if (this->__gameInformation->isInMenu())
-            {
+            if (this->__gameInformation->isInGame()) {
+                if (isFirstLoopOnWorld) {
+                    isFirstLoopOnWorld = false;
+                    world.init();
+                    std::cout << "Init World" << std::endl;
+                }
+                this->__graphic.getInterfaceEngine().display(world);
+                this->__graphic.getInterfaceEngine().update(world);
+            } else if (this->__gameInformation->isInMenu()) {
                 this->__graphic.getInterfaceEngine().display(menu);
                 this->__graphic.getInterfaceEngine().update(menu);
             }

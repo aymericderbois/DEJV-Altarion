@@ -13,6 +13,7 @@ namespace Graphic
 
         void Frame::draw(sf::RenderWindow* window) {
             window->draw(this->__background);
+            std::cout << "Print " << this->getComponents().size() << " elements" << std::endl;
             for (Component* c : this->getComponents()) {
                 c->draw(window);
             }

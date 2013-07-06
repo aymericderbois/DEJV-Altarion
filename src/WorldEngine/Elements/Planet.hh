@@ -30,18 +30,10 @@ private:
     
     // Display
     std::string     __name;
-    sf::Int32       __size;
-    Tools::Position __position;
     
 public:
     std::string     getName();
     void            setName(std::string name);
-    
-    Tools::Position GetPosition() const;
-    void            SetPosition(Tools::Position position);
-    
-    sf::Int32       GetSize() const;
-    void            SetSize(sf::Int32 size);
 };
 
 #endif	/* PLANET_HH */

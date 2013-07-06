@@ -19,9 +19,9 @@ namespace Graphic {
             void init(int x, int y);
             virtual void draw(sf::RenderWindow* window);
             virtual void update(sf::RenderWindow* window);
-
+            void setTexture(std::string);
             void setFont(std::string fontName);
-
+            void setSpriteRatio(float ratio);
         private:
             // For text button
             sf::Text __text;
@@ -49,6 +49,8 @@ namespace Graphic {
             sf::Text& getText();
             void setId(std::string __id);
             std::string getId() const;
+            void setSize(Tools::Position __size);
+            Tools::Position getSize() const;
         };
     }
 }

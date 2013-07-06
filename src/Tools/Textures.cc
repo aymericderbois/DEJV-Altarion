@@ -8,12 +8,13 @@ Textures::Textures() {
 Textures::~Textures() {
 }
 
-Textures Textures::getInstance() {
+Textures& Textures::getInstance() {
     static Textures instance;
     return instance;
 }
 
 void Textures::loadAllTextures() {
+    this->__textures = new std::map<std::string, sf::Texture*>();
     std::string ressourceFolder = "ressources/images/";
     DIR* dir = NULL;
     struct dirent* currentFile = NULL;
@@ -28,11 +29,12 @@ void Textures::loadAllTextures() {
             sf::Texture* texture = new sf::Texture();
             texture->loadFromFile(ressourceFolder + filename);
             assert(texture);
-            this->__textures.insert(std::pair<std::string, sf::Texture*>(filenameWithoutExt, texture));
+            this->__textures->insert(std::pair<std::string, sf::Texture*>(filenameWithoutExt, texture));
         }
     }
 }
 
 sf::Texture* Textures::get(std::string name) {
-    this->__textures.at(name);
+    assert(this->__textures->size() > 0);
+    return this->__textures->at(name);
 }
