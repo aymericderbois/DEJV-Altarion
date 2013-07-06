@@ -24,6 +24,7 @@ namespace World {
     void WorldEngine::initBar() {
         this->__topbar.setSize(Tools::Position(1024, 40));
         this->__topbar.setPosition(Tools::Position(0, 0));
+        this->__topbar.setBackgroundColor(sf::Color(38, 43, 57));
         
         this->addComponent(&this->__topbar);
     }
@@ -32,6 +33,8 @@ namespace World {
     {
         this->__sidebar.setSize(Tools::Position(300, 748));
         this->__sidebar.setPosition(Tools::Position(748, 40));
+        
+        this->__sidebar.setBackgroundColor(sf::Color(38, 43, 57));
         
         this->addComponent(&this->__sidebar);
     }
