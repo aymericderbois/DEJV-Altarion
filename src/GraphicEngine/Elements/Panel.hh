@@ -18,6 +18,7 @@ namespace Graphic {
             Tools::Position __position;
             Tools::Position __size;
             sf::Color __backgroundColor;
+            sf::Color __outlineColor;
             std::list<Component*> __components;
         public:
             std::list<Component*> getComponents() const;
@@ -27,6 +28,8 @@ namespace Graphic {
             Tools::Position getPosition() const;
             void setBackgroundColor(sf::Color __backgroundColor);
             sf::Color getBackgroundColor() const;
+            void setOutlineColor(sf::Color __outlineColor);
+            sf::Color getOutlineColor() const;
         };
     }
 }

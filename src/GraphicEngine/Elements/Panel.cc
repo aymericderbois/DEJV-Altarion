@@ -13,8 +13,12 @@ namespace Graphic {
             sf::RectangleShape rectangle(sf::Vector2f(
                 this->__size.getX(), this->__size.getY()
             ));
+            
             rectangle.setPosition(this->__position.getX(), this->__position.getY());
             rectangle.setFillColor(this->__backgroundColor);
+            rectangle.setOutlineThickness(2.f);
+            rectangle.setOutlineColor(this->__outlineColor);
+            
             window->draw(rectangle);
             for (Component* c : this->__components) {
                 c->draw(window);
@@ -59,6 +63,14 @@ namespace Graphic {
 
         sf::Color Panel::getBackgroundColor() const {
             return __backgroundColor;
+        }
+        
+        void Panel::setOutlineColor(sf::Color __outlineColor) {
+            this->__outlineColor = __outlineColor;
+        }
+        
+        sf::Color Panel::getOutlineColor() const {
+            return __outlineColor;
         }
     }
 }

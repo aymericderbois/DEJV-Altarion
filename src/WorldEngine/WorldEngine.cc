@@ -35,6 +35,7 @@ namespace World {
         this->__sidebar.setPosition(Tools::Position(748, 40));
         
         this->__sidebar.setBackgroundColor(sf::Color(38, 43, 57));
+        this->__sidebar.setOutlineColor(sf::Color(29, 33, 46));
         
         this->addComponent(&this->__sidebar);
     }
