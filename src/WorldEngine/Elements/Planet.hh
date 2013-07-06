@@ -50,6 +50,9 @@ public:
     
     Player*         getOwner();
     void            setOwner(Player* owner);
+    
+    Fleet*          getFleet();
+    void            setFleet(Fleet* fleet);
 };
 
 std::string     chooseTexture();

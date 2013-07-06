@@ -66,6 +66,16 @@ void            Planet::setOwner(Player* owner)
     this->__owner = owner;
 }
 
+Fleet*         Planet::getFleet()
+{
+    return this->__fleet;
+}
+
+void            Planet::setFleet(Fleet* fleet)
+{
+    this->__fleet = fleet;
+}
+
 std::string     chooseTexture()
 {
     int     textureNumber = rand() % 11 + 1;

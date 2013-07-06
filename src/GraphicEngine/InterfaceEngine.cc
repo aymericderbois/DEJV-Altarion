@@ -13,13 +13,14 @@ InterfaceEngine::InterfaceEngine() {
 InterfaceEngine::~InterfaceEngine() {
 }
 
-void InterfaceEngine::update(Graphic::GUI::Frame frame) {
+void InterfaceEngine::update(Graphic::GUI::Frame& frame) {
+    frame.update();
     for (Component* c : frame.getComponents()) {
         c->update(this->__window);
     }
 }
 
-void InterfaceEngine::display(Graphic::GUI::Frame frame) {
+void InterfaceEngine::display(Graphic::GUI::Frame& frame) {
     frame.draw(this->__window);
 }
 
