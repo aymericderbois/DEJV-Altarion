@@ -1,4 +1,5 @@
 #include "WorldEngine.hh"
+
 namespace World {
 
     WorldEngine::WorldEngine() {
@@ -31,12 +32,14 @@ namespace World {
     
     void    WorldEngine::initContextualHUD()
     {
+        // side bar
         this->__sidebar.setSize(Tools::Position(300, 748));
         this->__sidebar.setPosition(Tools::Position(748, 40));
         
         this->__sidebar.setBackgroundColor(sf::Color(38, 43, 57));
         this->__sidebar.setOutlineColor(sf::Color(29, 33, 46));
         
+        // header
         Graphic::GUI::PanelHeader *planetInfo = new Graphic::GUI::PanelHeader();
         planetInfo->setPlanetIcon("");
         planetInfo->setPlanetName("");
@@ -101,5 +104,20 @@ namespace World {
     {
         this->__sidebar.getPanelHeader()->setPlanetIcon(planet->getTextureName());
         this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
+        
+        
+        Graphic::GUI::Ressource *gasRevenue = new Graphic::GUI::Ressource();
+        gasRevenue->setPosition(Tools::Position(768, 170));
+        gasRevenue->setValue("30");
+        gasRevenue->setIcon("gas");
+        
+        this->__sidebar.addComponent(&(*gasRevenue));
+        
+        Graphic::GUI::Ressource *mineralsRevenue = new Graphic::GUI::Ressource();
+        mineralsRevenue->setPosition(Tools::Position(850, 170));
+        mineralsRevenue->setValue("30");
+        mineralsRevenue->setIcon("minerals");
+        
+        this->__sidebar.addComponent(&(*mineralsRevenue));
     }
 }

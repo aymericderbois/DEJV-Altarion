@@ -5,6 +5,7 @@
 #include "../GraphicEngine/Elements/Frame.hh"
 #include "../GraphicEngine/Elements/Panel.hh"
 #include "../GraphicEngine/Elements/ContextMenu.hh"
+#include "../GraphicEngine/Elements/Ressource.hh"
 #include "Elements/Planet.hh"
 #include "../ActionEngine/WorldAction.hh"
 #include "../Tools/Position.hh"
