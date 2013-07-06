@@ -24,4 +24,10 @@ void TopBar::init() {
     minerals->setIcon("minerals");
     this->addComponent(minerals);
 
+    Graphic::GUI::Ressource *ships = new Graphic::GUI::Ressource();
+    ships->setPosition(Tools::Position(210, 5));
+    ships->setValue("0");
+    ships->setIcon("ship");
+    this->addComponent(ships);
+
 }
