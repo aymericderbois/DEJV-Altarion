@@ -21,6 +21,13 @@ namespace World {
         return true;
     }
 
+    void WorldEngine::initBar() {
+        this->__topbar.setSize(Tools::Position(1024, 40));
+        this->__topbar.setPosition(Tools::Position(0, 0));
+        
+        this->addComponent(&this->__topbar);
+    }
+      
     void WorldEngine::generateWorld(int nbPlanets) {
         for (int i = 0; i < nbPlanets; i++) {
             Tools::Position position;
@@ -50,6 +57,10 @@ namespace World {
 
     void WorldEngine::init() {
         this->__action.setWorld(this);
+
+        // Création de la topbar
+        this->initBar();
+
         // @fixme : generate map here
         this->generateWorld(10);
         //Planet* planet = new Planet();
