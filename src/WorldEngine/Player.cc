@@ -38,3 +38,11 @@ int Player::getNbOre() const {
     return __nbOre;
 }
 
+void Player::setId(int __id) {
+    this->__id = __id;
+}
+
+int Player::getId() const {
+    return this->__id;
+}
+

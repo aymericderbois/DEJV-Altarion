@@ -12,6 +12,7 @@ Planet::Planet() {
     this->__shipyards = 0;
 
     this->__fleet = NULL;
+    this->__owner = NULL;
 
     std::stringstream name;
     name << "P";
@@ -45,6 +46,26 @@ void Planet::setTextureName(std::string texturename) {
     this->__textureName = texturename;
 }
 
+int             Planet::getGasRevenue()
+{
+    return BASE_REVENUE_GAS + (BASE_REVENUE_GAS * (this->__refineries));
+}
+
+int             Planet::getMineralsRevenue()
+{
+    return BASE_REVENUE_MINERALS + (BASE_REVENUE_MINERALS * (this->__mines));
+}
+
+Player*         Planet::getOwner()
+{
+    return this->__owner;
+}
+
+void            Planet::setOwner(Player* owner)
+{
+    this->__owner = owner;
+}
+
 std::string     chooseTexture()
 {
     int     textureNumber = rand() % 11 + 1;
@@ -65,4 +86,3 @@ std::string     chooseTexture()
         default:return "1-Earth";break;
     }
 }
-

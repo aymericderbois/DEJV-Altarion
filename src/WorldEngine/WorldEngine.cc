@@ -23,7 +23,25 @@ namespace World {
     }
 
     void WorldEngine::initBar() {
+        
+        int nbPlanets = 0;
+        int nbShips = 0;
+        
+        for (auto planet : this->__planets) {
+            if ((planet->getOwner() != NULL) && (planet->getOwner()->getId() == this->__player.getId())) {
+                nbPlanets++;
+            }
+        }
+        
         this->__topbar.init();
+    
+        this->__topbar.getGas()->setValue(std::to_string(this->__player.getNbGas()));
+        this->__topbar.getOre()->setValue(std::to_string(this->__player.getNbOre()));
+        
+        this->__player.setNbPlanets(nbPlanets);
+        
+        this->__topbar.getEarth()->setValue(std::to_string(this->__player.getNbPlanets()));
+        this->__topbar.getShips()->setValue(std::to_string(this->__player.getNbShip()));
         
         this->addComponent(&this->__topbar);
     }
@@ -65,16 +83,21 @@ namespace World {
       
     void WorldEngine::generateWorld(int nbPlanets) {
         srand (time(NULL));
+        bool isFirst = true;
         for (int i = 0; i < nbPlanets; i++) {
             Tools::Position position;
             Planet *planet = new Planet();
-
-            int x = rand() % 708 + 50;
-            int y = rand() % 708 + 50;
+            if (isFirst)
+            {
+                planet->setOwner(&(this->__player));
+                isFirst = false;
+            }
+            int x = rand() % 658 + 40;
+            int y = rand() % 658 + 40;
 
             while (!choosePosition(x, y, this->__planets)) {
-                x = rand() % 708 + 50;
-                y = rand() % 708 + 50;
+                x = rand() % 658 + 40;
+                y = rand() % 658 + 40;
             }
 
             position.setX(x);
@@ -93,12 +116,14 @@ namespace World {
 
     void WorldEngine::init() {
         this->__action.setWorld(this);
+        this->__player.setId(1);
 
+        this->generateWorld(10);
+        
         // Création de la topbar
         this->initBar();
         // Adding contextual menu
         this->initContextualHUD();
-        this->generateWorld(10);
 
         for (Planet* planet : this->__planets) {
             planet->setEvent(&this->__action);
@@ -110,8 +135,13 @@ namespace World {
     {
         this->__sidebar.getPanelHeader()->setPlanetIcon(planet->getTextureName());
         this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
-        this->__sidebar.getPanelHeader()->getMinerals()->setValue("30");
-        this->__sidebar.getPanelHeader()->getGas()->setValue("30");
+        this->__sidebar.getPanelHeader()->getMinerals()->setValue(std::to_string(planet->getMineralsRevenue()));
+        this->__sidebar.getPanelHeader()->getGas()->setValue(std::to_string(planet->getGasRevenue()));
+        
+        if (planet->getOwner() != NULL)
+        {
+            std::cout << "has owner" << std::endl;
+        }
     }
 
     void WorldEngine::setPlayer(Player __player) {
