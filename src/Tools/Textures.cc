@@ -28,6 +28,7 @@ void Textures::loadAllTextures() {
             std::string filenameWithoutExt = filename.substr(0,found);
             sf::Texture* texture = new sf::Texture();
             texture->loadFromFile(ressourceFolder + filename);
+            texture->setSmooth(true);
             assert(texture);
             this->__textures->insert(std::pair<std::string, sf::Texture*>(filenameWithoutExt, texture));
         }
