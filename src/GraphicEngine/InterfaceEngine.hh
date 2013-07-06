@@ -17,8 +17,8 @@ public:
     InterfaceEngine();
     virtual ~InterfaceEngine();
 
-    void display(Graphic::GUI::Frame frame);
-    void update(Graphic::GUI::Frame frame);
+    void display(Graphic::GUI::Frame& frame);
+    void update(Graphic::GUI::Frame& frame);
 
 private:
     sf::RenderWindow* __window;

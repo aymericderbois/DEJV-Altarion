@@ -24,12 +24,16 @@ namespace World
         void initContextualHUD();
         void generateWorld(int nbPlanets);
         void init();
+        void draw(sf::RenderWindow* window);
+        void update();
+        void addFleetInMove(Fleet* fleet);
     private:
         TopBar __topbar;
         Graphic::GUI::ContextMenu __sidebar;
         Player __player;
         WorldAction __action;
         std::vector<Planet*> __planets;
+        std::vector<Fleet*> __fleetInMove;
     public:
         void updateContext(Planet   *planet);
         void setPlayer(Player __player);

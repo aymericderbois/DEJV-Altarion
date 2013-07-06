@@ -17,7 +17,11 @@ namespace Graphic
                 c->draw(window);
             }
         }
-
+        
+        void Frame::update() {
+            
+        }
+        
         void Frame::setBackground(std::string img) {
             std::string file = "ressources/images/" + img;
             if (!this->__backgroundTexture.loadFromFile(file)) {

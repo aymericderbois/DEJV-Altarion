@@ -17,7 +17,8 @@ namespace Graphic
             virtual ~Frame();
             void addComponent(Component* component);
             void setBackground(std::string img);
-            void draw(sf::RenderWindow* window);
+            virtual void draw(sf::RenderWindow* window);
+            virtual void update();
         private:
             std::list<Component*> __components;
             sf::Sprite __background;
