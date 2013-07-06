@@ -14,7 +14,7 @@ namespace Graphic {
             void update(sf::RenderWindow* window);
             void addComponent(Component* component);
             virtual ~Panel();
-        private:
+        protected:
             Tools::Position __position;
             Tools::Position __size;
             sf::Color __backgroundColor;

@@ -23,9 +23,7 @@ namespace World {
     }
 
     void WorldEngine::initBar() {
-        this->__topbar.setSize(Tools::Position(1024, 40));
-        this->__topbar.setPosition(Tools::Position(0, 0));
-        this->__topbar.setBackgroundColor(sf::Color(38, 43, 57));
+        this->__topbar.init();
         
         this->addComponent(&this->__topbar);
     }
@@ -97,18 +95,9 @@ namespace World {
 
         // Création de la topbar
         this->initBar();
-        
         // Adding contextual menu
         this->initContextualHUD();
-
-        // @fixme : generate map here
         this->generateWorld(10);
-        //Planet* planet = new Planet();
-        //planet->setTexture("Bul");
-        //planet->setPosition(Tools::Position(169, 551));
-        //planet->setSpriteRatio(0.4);
-        //this->__planets.push_back(planet);
-        // @endFixme
 
         for (Planet* planet : this->__planets) {
             planet->setEvent(&this->__action);
@@ -122,5 +111,13 @@ namespace World {
         this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
         this->__sidebar.getPanelHeader()->getMinerals()->setValue("30");
         this->__sidebar.getPanelHeader()->getGas()->setValue("30");
+    }
+
+    void WorldEngine::setPlayer(Player __player) {
+        this->__player = __player;
+    }
+
+    Player WorldEngine::getPlayer() const {
+        return __player;
     }
 }
