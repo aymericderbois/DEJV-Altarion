@@ -13,19 +13,21 @@ Ressource::~Ressource() {
 
 void Ressource::draw(sf::RenderWindow* window)
 {
-    //  draw planet icon
-    if (this->__icon != "") {
-        sf::Texture* texture    = Textures::getInstance().get(this->__icon);
-        sf::Sprite  planetIcon;
-        planetIcon.setTexture(*texture);
-        planetIcon.setPosition(this->getPosition().getX(), this->getPosition().getY());
-        planetIcon.setScale(0.5, 0.5);
+    if (this->__value != "")
+    {
+        //  draw ressource icon
+        if (this->__icon != "") {
+            sf::Texture* texture    = Textures::getInstance().get(this->__icon);
+            sf::Sprite  planetIcon;
+            planetIcon.setTexture(*texture);
+            planetIcon.setPosition(this->getPosition().getX(), this->getPosition().getY());
+            planetIcon.setScale(0.5, 0.5);
         
-        window->draw(planetIcon);
-    }
+            window->draw(planetIcon);
+        }
+
     
-    // draw planet name
-    if (this->__value != "") {
+        // draw ressource value
         sf::Text text;
         sf::Font font;
         std::string fonturl = "ressources/fonts/biting.ttf";

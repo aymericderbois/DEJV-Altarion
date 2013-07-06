@@ -38,9 +38,16 @@ namespace Graphic {
 
                 window->draw(text);
             }
+            
+            for (Component* c : this->__components) {
+                c->draw(window);
+            }
         }
 
         void PanelHeader::update(sf::RenderWindow* window) {
+            for (Component* c : this->__components) {
+                c->update(window);
+            }
         }
         
         void PanelHeader::setSize(Tools::Position __size) {
@@ -48,6 +55,14 @@ namespace Graphic {
             this->__size.setY(__size.getY());
         }
 
+        void PanelHeader::addComponent(Component* component) {
+            this->__components.push_front(component);
+        }
+        
+        std::list<Component*> PanelHeader::getComponents() const {
+            return __components;
+        }
+        
         Tools::Position PanelHeader::getSize() const {
             return __size;
         }
@@ -95,6 +110,26 @@ namespace Graphic {
         std::string PanelHeader::getPlanetName()
         {
             return this->__planetName;
+        }
+        
+        void PanelHeader::setGas(Ressource* gas)
+        {
+            this->__gasRevenue = gas;
+        }
+        
+        Ressource*   PanelHeader::getGas()
+        {
+            return this->__gasRevenue;
+        }
+        
+        void PanelHeader::setMinerals(Ressource* minerals)
+        {
+            this->__mineralsRevenue = minerals;
+        }
+        
+        Ressource*   PanelHeader::getMinerals()
+        {
+            return this->__mineralsRevenue;
         }
     }
 }

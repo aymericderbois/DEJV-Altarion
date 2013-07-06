@@ -24,8 +24,8 @@ namespace Graphic {
             void setSpriteRatio(float ratio);
         private:
             // For text button
-            sf::Text __text;
-            sf::Font __font;
+            sf::Text    __text;
+            sf::Font    __font;
             std::string __id;
 
             // For image button

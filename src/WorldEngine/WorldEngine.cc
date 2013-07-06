@@ -47,6 +47,22 @@ namespace World {
         this->__sidebar.addComponent(&(*planetInfo));
         
         this->addComponent(&this->__sidebar);
+        
+        Graphic::GUI::Ressource *gasRevenue = new Graphic::GUI::Ressource();
+        gasRevenue->setPosition(Tools::Position(768, 170));
+        gasRevenue->setValue("");
+        gasRevenue->setIcon("gas");
+        
+        this->__sidebar.getPanelHeader()->setGas(&(*gasRevenue));
+        this->__sidebar.getPanelHeader()->addComponent(&(*gasRevenue));
+        
+        Graphic::GUI::Ressource *mineralsRevenue = new Graphic::GUI::Ressource();
+        mineralsRevenue->setPosition(Tools::Position(850, 170));
+        mineralsRevenue->setValue("");
+        mineralsRevenue->setIcon("minerals");
+        
+        this->__sidebar.getPanelHeader()->setMinerals(&(*mineralsRevenue));
+        this->__sidebar.getPanelHeader()->addComponent(&(*mineralsRevenue));
     }
       
     void WorldEngine::generateWorld(int nbPlanets) {
@@ -104,20 +120,7 @@ namespace World {
     {
         this->__sidebar.getPanelHeader()->setPlanetIcon(planet->getTextureName());
         this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
-        
-        
-        Graphic::GUI::Ressource *gasRevenue = new Graphic::GUI::Ressource();
-        gasRevenue->setPosition(Tools::Position(768, 170));
-        gasRevenue->setValue("30");
-        gasRevenue->setIcon("gas");
-        
-        this->__sidebar.addComponent(&(*gasRevenue));
-        
-        Graphic::GUI::Ressource *mineralsRevenue = new Graphic::GUI::Ressource();
-        mineralsRevenue->setPosition(Tools::Position(850, 170));
-        mineralsRevenue->setValue("30");
-        mineralsRevenue->setIcon("minerals");
-        
-        this->__sidebar.addComponent(&(*mineralsRevenue));
+        this->__sidebar.getPanelHeader()->getMinerals()->setValue("30");
+        this->__sidebar.getPanelHeader()->getGas()->setValue("30");
     }
 }
