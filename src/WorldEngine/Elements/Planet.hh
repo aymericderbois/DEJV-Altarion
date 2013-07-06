@@ -30,11 +30,17 @@ private:
     
     // Display
     std::string     __name;
+    std::string     __textureName;
     
 public:
     std::string     getName();
     void            setName(std::string name);
+    
+    std::string     getTextureName();
+    void            setTextureName(std::string texturename);
 };
+
+std::string     chooseTexture();
 
 #endif	/* PLANET_HH */
 

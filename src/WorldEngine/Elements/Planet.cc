@@ -20,6 +20,7 @@ Planet::Planet() {
     name << rand() % 999 + 0;
 
     this->setName(name.str());
+    this->setTextureName(chooseTexture());
 }
 
 Planet::~Planet() {
@@ -35,3 +36,33 @@ std::string Planet::getName() {
 void Planet::setName(std::string name) {
     this->__name = name;
 }
+
+std::string Planet::getTextureName() {
+    return this->__name;
+}
+
+void Planet::setTextureName(std::string texturename) {
+    this->__name = texturename;
+}
+
+std::string     chooseTexture()
+{
+    int     textureNumber = rand() % 11 + 1;
+    
+    switch (textureNumber) {
+        case 1: return "1-Earth"; break;
+        case 2: return "1-Mars"; break;
+        case 3: return "Brightmoon"; break;
+        case 4: return "Bul"; break;
+        case 5: return "Darkmoon"; break;
+        case 6: return "Jupiter"; break;
+        case 7: return "Kahless"; break;
+        case 8: return "Saturn"; break;
+        case 9: return "Sporl"; break;
+        case 10: return "Tor"; break;
+        case 11: return "Uranus"; break;
+            
+        default:return "1-Earth";break;
+    }
+}
+

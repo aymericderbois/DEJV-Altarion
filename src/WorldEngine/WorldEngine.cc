@@ -40,7 +40,7 @@ namespace World {
             planet->setPosition(position);
             planet->setSpriteRatio(0.4);
             planet->setSize(Tools::Position(40, 40));
-            planet->setTexture("Bul");
+            planet->setTexture(planet->getTextureName());
             
             this->__planets.push_back(planet);
 
