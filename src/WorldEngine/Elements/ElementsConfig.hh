@@ -8,10 +8,10 @@
 #define BASE_REVENUE_MINERALS   10
 #define BASE_REVENUE_GAS        7
 
-#define REVENUE_RATE            0.0005f
+#define REVENUE_RATE            0.005f
 
-#define BASE_STOCK_MINERALS     100000
-#define BASE_STOCK_GAS          100000
+#define BASE_STOCK_MINERALS     1000
+#define BASE_STOCK_GAS          1000
 
 /*
  *  BUILDINGS CONFIG

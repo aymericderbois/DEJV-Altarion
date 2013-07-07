@@ -62,7 +62,7 @@ namespace Graphic {
                     this->__event->onCLick(this, sf::Mouse::Left);
                 else
                     this->__event->onCLick(this, sf::Mouse::Right);
-                this->__active = 30;
+                this->__active = 10;
             }
             else
             {
