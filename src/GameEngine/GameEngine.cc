@@ -26,6 +26,7 @@ namespace Game
         Interface::Menu menu;
         menu.setMusic("starcraft_ambient");
         menu.getMusic()->play();
+        menu.getMusic()->setVolume(60);
         //World::WorldEngine world;
         World::WorldEngine world;
         world.setMusic("sw_ambient");
@@ -42,6 +43,7 @@ namespace Game
                     world.init();
                     menu.getMusic()->stop();
                     world.getMusic()->play();
+                    world.getMusic()->setVolume(60);
                     std::cout << "Init World" << std::endl;
                 }
                 this->__graphic.getInterfaceEngine().display(world);
