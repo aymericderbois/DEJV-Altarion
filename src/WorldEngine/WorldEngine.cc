@@ -51,9 +51,24 @@ namespace World {
             
             // La flotte est arrivée
             if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
-                f->getPlanetDestination()->setFleet(f);
-                f->getPlanetDestination()->setOwner(&this->__player);
-                f->getPlanetDestination()->setBackground("planet-owned");
+                
+                if ((f->getPlanetDestination()->getFleet() == NULL) ||
+                    ((f->getPlanetDestination()->getFleet() != NULL) && (f->getPlanetDestination()->getFleet()->getShips().size() > 0)))
+                {
+                    f->getPlanetDestination()->setFleet(f);
+                    f->getPlanetDestination()->setOwner(&this->__player);
+                    f->getPlanetDestination()->setBackground("planet-owned");
+                }
+                else
+                {
+                    if ((f->getPlanetDestination()->getFleet()->getShips().size()) < f->getShips().size())
+                    {
+                        f->getPlanetDestination()->setFleet(f);
+                        f->getPlanetDestination()->setOwner(&this->__player);
+                        f->getPlanetDestination()->setBackground("planet-owned");
+                    }
+                }
+                
                 this->__fleetInMove.erase(std::remove(
                         __fleetInMove.begin(), __fleetInMove.end(), f), __fleetInMove.end());
                 f->moveEnded();
@@ -105,7 +120,22 @@ namespace World {
                 isFirst = false;
             }
             else
+            {
                 planet->setBackground("planet-enemy");
+                Fleet* wildFleet = new Fleet();
+                for (int i = 0; i < (rand() % 10); i++)
+                {
+                    Ship wildShip;
+                    
+                    wildShip.setArmor(CRUISER_ARMOR);
+                    wildShip.setStrength(CRUISER_STRENGTH);
+                    wildShip.setShield(CRUISER_SHIELD);
+                    
+                    wildFleet->addShip(wildShip);
+                }
+                
+                planet->setFleet(wildFleet);
+            }
             
             int x = rand() % 658 + 40;
             int y = rand() % 658 + 40;
