@@ -8,12 +8,12 @@ WorldAction::WorldAction() {
 WorldAction::~WorldAction() {
 }
 
-void WorldAction::onCLick(EventLauncher *launcher) {
+void WorldAction::onCLick(EventLauncher *launcher, int buttonClick) {
     Graphic::GUI::Button *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
     
     Planet  *planet = dynamic_cast<Planet*> (launcher);
     
-    if (planet != 0) {
+    if (buttonClick == sf::Mouse::Left && planet != 0) {
         // set up contextual menu with clicked content
         if ((planet->getOwner() != NULL) &&
             (this->__world->getCurrentPlanet() != NULL) &&
@@ -27,6 +27,17 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         planet->setBackground("planet-selected");
         button->fireSound();
     }
+    
+    // Click droit sur une planete. On envoie les troupes
+    if (buttonClick == sf::Mouse::Right && planet != 0) {
+        Fleet* f = planet->getFleet();
+        if (f != nullptr) {
+            planet->setFleet(nullptr);
+            this->__world->addFleetInMove(f);
+            f->setMoving(planet, this->__world->getCurrentPlanet()->getPosition(), planet->getPosition());
+        }
+    }
+
     
     if (button->getId() == "ADD_MINE")
     {
@@ -92,7 +103,6 @@ void WorldAction::onHover(EventLauncher *launcher) {
 
 void WorldAction::onUnHover(EventLauncher *launcher) {
     Graphic::GUI::Button *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
-    
     
     Planet  *planet = dynamic_cast<Planet*> (launcher);
     

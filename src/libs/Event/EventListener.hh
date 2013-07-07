@@ -10,7 +10,7 @@
 class EventListener {
 public:
     EventListener();
-    virtual void onCLick(EventLauncher *launcher) = 0;
+    virtual void onCLick(EventLauncher *launcher, int buttonClick) = 0;
     virtual void onHover(EventLauncher *launcher) = 0;
     virtual void onUnHover(EventLauncher *launcher) = 0;
     virtual ~EventListener();

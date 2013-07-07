@@ -55,8 +55,13 @@ namespace Graphic {
                 }
             }
             
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover && (this->__active == 0)) {
-                this->__event->onCLick(this);
+            bool isButtonPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left)
+                ||sf::Mouse::isButtonPressed(sf::Mouse::Right);
+            if (isButtonPressed && this->__isHover && (this->__active == 0)) {
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+                    this->__event->onCLick(this, sf::Mouse::Left);
+                else
+                    this->__event->onCLick(this, sf::Mouse::Right);
                 this->__active = 30;
             }
             else

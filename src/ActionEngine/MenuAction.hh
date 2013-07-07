@@ -17,7 +17,7 @@ public:
     MenuAction();
     virtual ~MenuAction();
 public:
-    void onCLick(EventLauncher *launcher);
+    void onCLick(EventLauncher *launcher, int buttonClick);
     void onHover(EventLauncher *launcher);
     void onUnHover(EventLauncher *launcher);
     

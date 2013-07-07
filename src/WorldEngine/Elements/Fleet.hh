@@ -7,18 +7,21 @@
 #include "Ship.hh"
 #include "../../Tools/Position.hh"
 
+class Planet;
+
 class Fleet {
 public:
     Fleet();
     ~Fleet();
     void move();
-    void setMoving(Tools::Position from, Tools::Position to);
+    void setMoving(Planet* planetDestination, Tools::Position from, Tools::Position to);
+    void moveEnded();
 private:
     std::list<Ship> __ships;
     Tools::Position* __departure;
     Tools::Position* __destination;
     Tools::Position* __current;
-
+    Planet* __planetDestination;
 public:
     
     void addShip(Ship ship);
@@ -35,6 +38,8 @@ public:
     Tools::Position* getDeparture() {
         return __departure;
     }
+    void setPlanetDestination(Planet* __planet);
+    Planet* getPlanetDestination();
     
 };
 

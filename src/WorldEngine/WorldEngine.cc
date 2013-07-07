@@ -48,6 +48,15 @@ namespace World {
                 pos->setX(pos->getX() + directionX);
             if (pos->getY() != dest->getY())
                 pos->setY(pos->getY() + directionY);
+            
+            // La flotte est arrivé
+            if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
+                f->getPlanetDestination()->setFleet(f);
+                this->__fleetInMove.erase(std::remove(
+                        __fleetInMove.begin(), __fleetInMove.end(), f), __fleetInMove.end());
+                f->moveEnded();
+            }
+ 
         }
         
         updateTopBarValues();
@@ -133,10 +142,6 @@ namespace World {
             planet->setEvent(&this->__action);
             this->addComponent(&(*planet));
         }
-        // @fixme Exemple de déplacement de flotte
-        Fleet* f = new Fleet();
-        f->setMoving(Tools::Position(40, 40), Tools::Position(750, 490));
-        this->addFleetInMove(f);
     }
 
     void WorldEngine::addFleetInMove(Fleet* fleet) {

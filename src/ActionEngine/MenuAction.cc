@@ -14,7 +14,7 @@ MenuAction::MenuAction() {
 MenuAction::~MenuAction() {
 }
 
-void MenuAction::onCLick(EventLauncher *launcher) {
+void MenuAction::onCLick(EventLauncher *launcher, int buttonClick) {
     Graphic::GUI::Button *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
     
     if (button->getId() == "EXIT") exit(2);
