@@ -8,6 +8,7 @@
 #include "../../GraphicEngine/Elements/Button.hh"
 
 #include "../Elements/Planet.hh"
+#include "../../ActionEngine/WorldAction.hh"
 
 class SideBar : public Graphic::GUI::ContextMenu
 {
@@ -17,6 +18,7 @@ public:
     void init();
     void updateContext(Planet *planet);
 private:
+    WorldAction               *__action;
     Graphic::GUI::PanelHeader *__header;
     Graphic::GUI::Button      *__mineBtn;
     Graphic::GUI::Button      *__refineryBtn;
@@ -47,6 +49,8 @@ public:
     
     void setShipyardLabel (Graphic::GUI::Label *btn);
     Graphic::GUI::Label* getShipyardLabel();
+    
+    void setAction(WorldAction *action) { this->__action = action;}
 };
 
 #endif	/* SIDEBAR_HH */

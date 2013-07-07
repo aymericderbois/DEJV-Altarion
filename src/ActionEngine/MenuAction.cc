@@ -23,7 +23,6 @@ void MenuAction::onCLick(EventLauncher *launcher) {
         Game::GameEngine::getInstance().getGameInformation()->setCurrentPage(Game::IN_GAME);
         std::cout << Game::GameEngine::getInstance().getGameInformation()->getCurrentPage() << std::endl;
     }
-
 }
 
 void MenuAction::onHover(EventLauncher *launcher) {

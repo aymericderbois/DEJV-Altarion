@@ -44,6 +44,9 @@ namespace World
         void updateTopBarValues();
         Planet* getCurrentPlanet() { return this->__currentPlanet;}
         void setCurrentPlanet(Planet* planet) { this->__currentPlanet = planet;}
+        void buyMine();
+        void buyRefinery();
+        void buyShipyard();
     };
 }
 #endif // WORLDENGINE_H

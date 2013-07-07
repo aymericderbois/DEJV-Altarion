@@ -1,5 +1,4 @@
 #include "SideBar.hh"
-#include "../../ActionEngine/MenuAction.hh"
 
 SideBar::SideBar() {
 }
@@ -8,6 +7,7 @@ SideBar::~SideBar() {
 }
 
 void SideBar::init() {
+    
     // side bar
     this->setSize(Tools::Position(300, 748));
     this->setPosition(Tools::Position(748, 40));
@@ -45,7 +45,8 @@ void SideBar::init() {
     mineBtn->setPosition(Tools::Position(768, 270));
     mineBtn->setSpriteRatio(0.7);
     mineBtn->setSize(Tools::Position(150, 100));
-    mineBtn->setEvent(new MenuAction());
+    mineBtn->setEvent(this->__action);
+    mineBtn->setId("ADD_MINE");
     this->setMineBtn(&(*mineBtn));
     this->addComponent(&(*mineBtn));
     
@@ -61,7 +62,8 @@ void SideBar::init() {
     refineryBtn->setPosition(Tools::Position(768, 380));
     refineryBtn->setSize(Tools::Position(150, 100));
     refineryBtn->setSpriteRatio(0.7);
-    refineryBtn->setEvent(new MenuAction());
+    refineryBtn->setEvent(this->__action);
+    refineryBtn->setId("ADD_REFINERY");
     this->setRefineryBtn(&(*refineryBtn));
     this->addComponent(&(*refineryBtn));
     
@@ -77,7 +79,8 @@ void SideBar::init() {
     shipyardBtn->setPosition(Tools::Position(768, 490));
     shipyardBtn->setSize(Tools::Position(150, 100));
     shipyardBtn->setSpriteRatio(0.7);
-    shipyardBtn->setEvent(new MenuAction());
+    shipyardBtn->setEvent(this->__action);
+    shipyardBtn->setId("ADD_SHIPYARD");
     this->setShipyardBtn(&(*shipyardBtn));
     this->addComponent(&(*shipyardBtn));
     

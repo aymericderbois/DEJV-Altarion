@@ -1,5 +1,6 @@
 #include "WorldAction.hh"
 #include "../WorldEngine/WorldEngine.hh"
+#include "../WorldEngine/Elements/ElementsConfig.hh"
 
 WorldAction::WorldAction() {
 }
@@ -24,8 +25,37 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         planet->setBackground("planet-selected");
     }
     
+    if (button->getId() == "ADD_MINE")
+    {
+        if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
+            (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
+        {
+            this->__world->buyMine();
+            this->__world->updateContext(this->__world->getCurrentPlanet());
+        }
+    }
+    
+    if (button->getId() == "ADD_REFINERY")
+    {
+        if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
+            (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
+        {
+            this->__world->buyRefinery();
+            this->__world->updateContext(this->__world->getCurrentPlanet());
+        }
+    }
+    
+    if (button->getId() == "ADD_SHIPYARD")
+    {
+        if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
+            (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
+        {
+            this->__world->buyShipyard();
+            this->__world->updateContext(this->__world->getCurrentPlanet());
+        }
+    }
+
     std::cout << "On click" << std::endl;
-    std::cout << this->__world->getComponents().size() << std::endl;
 }
 
 void WorldAction::onHover(EventLauncher *launcher) {

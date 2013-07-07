@@ -19,7 +19,6 @@ namespace World {
      */
     void WorldEngine::draw(sf::RenderWindow* window) {
         Graphic::GUI::Frame::draw(window);
-        std::cout << "draw" << std::endl;
         for (Fleet* f : this->__fleetInMove) {
             Tools::Position* pos = f->getCurrent();
             sf::CircleShape shape(5);
@@ -71,6 +70,9 @@ namespace World {
     }
 
     void WorldEngine::initContextualHUD() {
+        WorldAction *action = new WorldAction();
+        action->setWorld(this);
+        this->__sidebar.setAction(&(*action));
         this->__sidebar.init();
         this->addComponent(&this->__sidebar);
     }
@@ -176,13 +178,76 @@ namespace World {
         
         this->__player.setNbPlanets(nbPlanets);
         this->__player.setNbPlanets(nbShips);
-        this->__player.setNbGas(this->__player.getNbGas() + (gasRevenue * 0.0001f));
-        this->__player.setNbOre(this->__player.getNbOre() + (oreRevenue * 0.0001f));
+        this->__player.setNbGas(this->__player.getNbGas() + (gasRevenue * REVENUE_RATE ));
+        this->__player.setNbOre(this->__player.getNbOre() + (oreRevenue * REVENUE_RATE ));
         
         this->__topbar.getGas()->setValue(std::to_string((int) floor(this->__player.getNbGas() + 0.5)));
         this->__topbar.getOre()->setValue(std::to_string((int) floor(this->__player.getNbOre() + 0.5)));
         
         this->__topbar.getEarth()->setValue(std::to_string(this->__player.getNbPlanets()));
         this->__topbar.getShips()->setValue(std::to_string(this->__player.getNbShip()));
+    }
+    
+    void WorldEngine::buyMine()
+    {
+        if (this->getCurrentPlanet()->getMaxMines() >
+            this->getCurrentPlanet()->getMines())
+        {
+            if ((this->__player.getNbOre() > MINE_COST_MINERALS) &&
+                (this->__player.getNbGas() > MINE_COST_GAS))
+            {
+                float   ore = this->__player.getNbOre() - MINE_COST_MINERALS;
+                float   gas = this->__player.getNbGas() - MINE_COST_GAS;
+                
+                this->__player.setNbGas(gas);
+                this->__player.setNbOre(ore);
+                
+                this->getCurrentPlanet()->setMines(this->getCurrentPlanet()->getMines() + 1);
+            }
+        }
+        //this->updateTopBarValues();
+        this->updateContext(this->getCurrentPlanet());
+    }
+    
+    void WorldEngine::buyRefinery()
+    {
+        if (this->getCurrentPlanet()->getMaxRefineries() >
+            this->getCurrentPlanet()->getRefineries())
+        {
+            if ((this->__player.getNbOre() > REFINERY_COST_MINERALS) &&
+                (this->__player.getNbGas() > REFINERY_COST_GAS))
+            {
+                float   ore = this->__player.getNbOre() - REFINERY_COST_MINERALS;
+                float   gas = this->__player.getNbGas() - REFINERY_COST_GAS;
+                
+                this->__player.setNbGas(gas);
+                this->__player.setNbOre(ore);
+                
+                this->getCurrentPlanet()->setRefineries(this->getCurrentPlanet()->getRefineries() + 1);
+            }
+        }
+        //this->updateTopBarValues();
+        this->updateContext(this->getCurrentPlanet());
+    }
+    
+    void WorldEngine::buyShipyard()
+    {
+        if (this->getCurrentPlanet()->getMaxShipyards() >
+            this->getCurrentPlanet()->getShipyards())
+        {
+            if ((this->__player.getNbOre() > SHIPYARD_COST_MINERALS) &&
+                (this->__player.getNbGas() > SHIPYARD_COST_GAS))
+            {
+                float   ore = this->__player.getNbOre() - SHIPYARD_COST_MINERALS;
+                float   gas = this->__player.getNbGas() - SHIPYARD_COST_GAS;
+                
+                this->__player.setNbGas(gas);
+                this->__player.setNbOre(ore);
+                
+                this->getCurrentPlanet()->setShipyards(this->getCurrentPlanet()->getShipyards() + 1);
+            }
+        }
+        //this->updateTopBarValues();
+        this->updateContext(this->getCurrentPlanet());
     }
 }
