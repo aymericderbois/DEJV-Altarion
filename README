@@ -9,14 +9,14 @@ BUILD:
 	Altarion depends on SFML 2.0, you'll need to install it before you go further.
 	
 	Linux/Mac OS:
-		$> cmake -G "Unix makefiles"
+		$> ./configure
 		$> make
 		$> ./UniversalSupremacy
 	
-	Mac OS (Xcode):
+	Alternatively you can build an Xcode project:
 		$> cmake -G Xcode
 		$> open UniversalSupremacy.xcodeproj
 		then click "build & run" (the first time will fail at linking and the second will succeed)
 		
-	In both case, we highly recommand you use cmake in a separate directory, 
-	if so, please also copy the "ressources" directory to your target directory.
+		we highly recommand you use cmake in a separate directory, 
+		if so, please also copy the "ressources" directory to your target directory.
