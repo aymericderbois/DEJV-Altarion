@@ -34,7 +34,7 @@ namespace World
         SideBar __sidebar;
         Player __player;
         WorldAction __action;
-        Planet*              __currentPlanet;
+        Planet*              __currentPlanet = NULL;
         std::vector<Planet*> __planets;
         std::vector<Fleet*> __fleetInMove;
     public:

@@ -3,6 +3,7 @@
 #include "GameEngine/GameEngine.hh"
 #include "Tools/Textures.hh"
 #include "Tools/Sounds.hh"
+#include "Tools/Music.hh"
 
 int main(int argc, char *argv[]) {
     bool startInGame = false;
@@ -12,6 +13,7 @@ int main(int argc, char *argv[]) {
 
     Textures::getInstance().loadAllTextures();
     Sounds::getInstance().loadAllSounds();
+    Musics::getInstance().loadAllMusics();
     Game::GameEngine::getInstance().run(startInGame);
     return EXIT_SUCCESS;
 }

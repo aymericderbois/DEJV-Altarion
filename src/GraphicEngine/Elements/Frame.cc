@@ -38,6 +38,17 @@ namespace Graphic
         std::list<Component*> Frame::getComponents() const {
             return __components;
         }
+        
+        void Frame::setMusic(std::string music)
+        {
+            this->__music = Musics::getInstance().get(music);
+        }
+        
+        sf::Music* Frame::getMusic()
+        {
+            return this->__music;
+        }
+        
     }
 }
 

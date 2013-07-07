@@ -24,8 +24,11 @@ namespace Game
         }
         
         Interface::Menu menu;
+        menu.setMusic("starcraft_ambient");
+        menu.getMusic()->play();
         //World::WorldEngine world;
         World::WorldEngine world;
+        world.setMusic("sw_ambient");
         bool isFirstLoopOnWorld = true;
         menu.init();
         //int i = 0;
@@ -37,6 +40,8 @@ namespace Game
                 if (isFirstLoopOnWorld) {
                     isFirstLoopOnWorld = false;
                     world.init();
+                    menu.getMusic()->stop();
+                    world.getMusic()->play();
                     std::cout << "Init World" << std::endl;
                 }
                 this->__graphic.getInterfaceEngine().display(world);

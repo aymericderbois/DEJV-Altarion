@@ -90,6 +90,7 @@ namespace World {
             {
                 planet->setOwner(&(this->__player));
                 planet->setBackground("planet-owned");
+                this->setCurrentPlanet(planet);
                 isFirst = false;
             }
             else

@@ -16,6 +16,7 @@ void WorldAction::onCLick(EventLauncher *launcher) {
     if (planet != 0) {
         // set up contextual menu with clicked content
         if ((planet->getOwner() != NULL) &&
+            (this->__world->getCurrentPlanet() != NULL) &&
             (this->__world->getPlayer().getId() == planet->getOwner()->getId()))
             this->__world->getCurrentPlanet()->setBackground("planet-owned");
         else
@@ -96,7 +97,8 @@ void WorldAction::onUnHover(EventLauncher *launcher) {
     Planet  *planet = dynamic_cast<Planet*> (launcher);
     
     if (planet != 0) {
-        if (planet->getName() != this->__world->getCurrentPlanet()->getName())
+        if ((this->__world->getCurrentPlanet() != NULL) &&
+            (planet->getName() != this->__world->getCurrentPlanet()->getName()))
         {
             if ((planet->getOwner() != NULL) && (this->__world->getPlayer().getId() == planet->getOwner()->getId()))
                 planet->setBackground("planet-owned");
