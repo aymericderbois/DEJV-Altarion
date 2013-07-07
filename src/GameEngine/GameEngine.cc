@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "GameEngine.hh"
 #include "../WorldEngine/WorldEngine.hh"
 
@@ -33,6 +35,8 @@ namespace Game
         bool isFirstLoopOnWorld = true;
         menu.init();
         //int i = 0;
+
+        this->__window->setFramerateLimit(30);
         while (this->__window->isOpen())
         {
             this->__window->clear();
