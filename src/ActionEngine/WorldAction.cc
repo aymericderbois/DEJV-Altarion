@@ -15,7 +15,8 @@ void WorldAction::onCLick(EventLauncher *launcher) {
     
     if (planet != 0) {
         // set up contextual menu with clicked content
-        if ((planet->getOwner() != NULL) && (this->__world->getPlayer().getId() == planet->getOwner()->getId()))
+        if ((planet->getOwner() != NULL) &&
+            (this->__world->getPlayer().getId() == planet->getOwner()->getId()))
             this->__world->getCurrentPlanet()->setBackground("planet-owned");
         else
             this->__world->getCurrentPlanet()->setBackground("planet-enemy");
@@ -51,6 +52,16 @@ void WorldAction::onCLick(EventLauncher *launcher) {
             (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
         {
             this->__world->buyShipyard();
+            this->__world->updateContext(this->__world->getCurrentPlanet());
+        }
+    }
+    
+    if (button->getId() == "ADD_SHIP")
+    {
+        if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
+            (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
+        {
+            this->__world->buyShip();
             this->__world->updateContext(this->__world->getCurrentPlanet());
         }
     }

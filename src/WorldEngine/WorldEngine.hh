@@ -40,13 +40,14 @@ namespace World
     public:
         void updateContext(Planet   *planet);
         void setPlayer(Player __player);
-        Player getPlayer() const;
+        Player getPlayer();
         void updateTopBarValues();
         Planet* getCurrentPlanet() { return this->__currentPlanet;}
         void setCurrentPlanet(Planet* planet) { this->__currentPlanet = planet;}
         void buyMine();
         void buyRefinery();
         void buyShipyard();
+        void buyShip();
     };
 }
 #endif // WORLDENGINE_H

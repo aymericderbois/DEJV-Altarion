@@ -48,12 +48,12 @@ void Planet::setTextureName(std::string texturename) {
 
 int             Planet::getGasRevenue()
 {
-    return BASE_REVENUE_GAS + (BASE_REVENUE_GAS * (this->__refineries));
+    return BASE_REVENUE_GAS + (BASE_REVENUE_GAS * (this->__refineries * REFINERY_RATE));
 }
 
 int             Planet::getMineralsRevenue()
 {
-    return BASE_REVENUE_MINERALS + (BASE_REVENUE_MINERALS * (this->__mines));
+    return BASE_REVENUE_MINERALS + (BASE_REVENUE_MINERALS * (this->__mines * REFINERY_RATE));
 }
 
 Player*         Planet::getOwner()

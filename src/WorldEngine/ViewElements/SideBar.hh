@@ -27,6 +27,10 @@ private:
     Graphic::GUI::Label       *__mineLabel;
     Graphic::GUI::Label       *__refineryLabel;
     Graphic::GUI::Label       *__shipyardLabel;
+    
+    Graphic::GUI::Button      *__cruiserBtn;
+    Graphic::GUI::Label       *__cruiserLabel;
+    
 public:
     void setPanelHeader (Graphic::GUI::PanelHeader *__header);
     Graphic::GUI::PanelHeader* getPanelHeader();

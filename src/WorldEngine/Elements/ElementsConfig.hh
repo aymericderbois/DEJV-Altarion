@@ -20,10 +20,12 @@
 #define REFINERY_COST_MINERALS  200
 #define REFINERY_COST_GAS       0
 #define REFINERY_BUILD_TIME     300
+#define REFINERY_RATE           5.0
 
 #define MINE_COST_MINERALS      200
 #define MINE_COST_GAS           0
 #define MINE_BUILD_TIME         200
+#define MINE_RATE           5.0
 
 #define SHIPYARD_COST_MINERALS  1500
 #define SHIPYARD_COST_GAS       800

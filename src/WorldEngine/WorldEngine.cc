@@ -1,5 +1,6 @@
 #include "WorldEngine.hh"
 #include "../ActionEngine/MenuAction.hh"
+#include "Elements/Ship.hh"
 #include <math.h> 
 
 namespace World {
@@ -89,7 +90,6 @@ namespace World {
             {
                 planet->setOwner(&(this->__player));
                 planet->setBackground("planet-owned");
-                this->setCurrentPlanet(planet);
                 isFirst = false;
             }
             else
@@ -108,7 +108,7 @@ namespace World {
 
             planet->setPosition(position);
             planet->setSpriteRatio(0.4);
-            planet->setSize(Tools::Position(40, 40));
+            planet->setSize(Tools::Position(50, 50));
             planet->setTexture(planet->getTextureName());
 
             this->__planets.push_back(planet);
@@ -153,7 +153,7 @@ namespace World {
         this->__player = __player;
     }
 
-    Player WorldEngine::getPlayer() const {
+    Player WorldEngine::getPlayer() {
         return __player;
     }
     
@@ -177,7 +177,7 @@ namespace World {
         }
         
         this->__player.setNbPlanets(nbPlanets);
-        this->__player.setNbPlanets(nbShips);
+        this->__player.setNbShip(nbShips);
         this->__player.setNbGas(this->__player.getNbGas() + (gasRevenue * REVENUE_RATE ));
         this->__player.setNbOre(this->__player.getNbOre() + (oreRevenue * REVENUE_RATE ));
         
@@ -245,6 +245,37 @@ namespace World {
                 this->__player.setNbOre(ore);
                 
                 this->getCurrentPlanet()->setShipyards(this->getCurrentPlanet()->getShipyards() + 1);
+            }
+        }
+        //this->updateTopBarValues();
+        this->updateContext(this->getCurrentPlanet());
+    }
+    
+    void WorldEngine::buyShip()
+    {
+    
+        if (this->getCurrentPlanet()->getShipyards() > 0)
+        {
+            if ((this->__player.getNbOre() > CRUISER_COST_MINERALS) &&
+                (this->__player.getNbGas() > CRUISER_COST_GAS))
+            {
+                float   ore = this->__player.getNbOre() - CRUISER_COST_MINERALS;
+                float   gas = this->__player.getNbGas() - CRUISER_COST_GAS;
+                
+                this->__player.setNbGas(gas);
+                this->__player.setNbOre(ore);
+            
+                if (this->getCurrentPlanet()->getFleet() == NULL)
+                {
+                    this->getCurrentPlanet()->setFleet(new Fleet());
+                }
+            
+                Ship newShip;
+                newShip.setArmor(CRUISER_ARMOR);
+                newShip.setShield(CRUISER_SHIELD);
+                newShip.setStrength(CRUISER_STRENGTH);
+            
+                this->getCurrentPlanet()->getFleet()->addShip(newShip);
             }
         }
         //this->updateTopBarValues();

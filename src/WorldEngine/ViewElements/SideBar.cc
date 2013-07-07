@@ -31,7 +31,7 @@ void SideBar::init() {
     this->getPanelHeader()->addComponent(&(*gasRevenue));
     
     Graphic::GUI::Ressource *mineralsRevenue = new Graphic::GUI::Ressource();
-    mineralsRevenue->setPosition(Tools::Position(850, 170));
+    mineralsRevenue->setPosition(Tools::Position(900, 170));
     mineralsRevenue->setValue("");
     mineralsRevenue->setIcon("minerals");
     
@@ -41,7 +41,6 @@ void SideBar::init() {
     
     // add buttons
     Graphic::GUI::Button    *mineBtn = new Graphic::GUI::Button();
-    mineBtn->setTexture("mine");
     mineBtn->setPosition(Tools::Position(768, 270));
     mineBtn->setSpriteRatio(0.7);
     mineBtn->setSize(Tools::Position(150, 100));
@@ -58,7 +57,6 @@ void SideBar::init() {
     this->addComponent(&(*mineLbl));
     
     Graphic::GUI::Button    *refineryBtn = new Graphic::GUI::Button();
-    refineryBtn->setTexture("refinery");
     refineryBtn->setPosition(Tools::Position(768, 380));
     refineryBtn->setSize(Tools::Position(150, 100));
     refineryBtn->setSpriteRatio(0.7);
@@ -75,7 +73,6 @@ void SideBar::init() {
     this->addComponent(&(*refineryLbl));
     
     Graphic::GUI::Button    *shipyardBtn = new Graphic::GUI::Button();
-    shipyardBtn->setTexture("shipyard");
     shipyardBtn->setPosition(Tools::Position(768, 490));
     shipyardBtn->setSize(Tools::Position(150, 100));
     shipyardBtn->setSpriteRatio(0.7);
@@ -90,6 +87,22 @@ void SideBar::init() {
     shipyardLbl->setPosition(Tools::Position(900, 490));
     this->setShipyardLabel(&(*shipyardLbl));
     this->addComponent(&(*shipyardLbl));
+    
+    Graphic::GUI::Button    *cruiserBtn = new Graphic::GUI::Button();
+    cruiserBtn->setPosition(Tools::Position(768, 600));
+    cruiserBtn->setSize(Tools::Position(150, 100));
+    cruiserBtn->setSpriteRatio(0.7);
+    cruiserBtn->setEvent(this->__action);
+    cruiserBtn->setId("ADD_SHIP");
+    this->__cruiserBtn = &(*cruiserBtn);
+    this->addComponent(&(*cruiserBtn));
+    
+    Graphic::GUI::Label    *cruiserLbl = new Graphic::GUI::Label();
+    cruiserLbl->setText("");
+    cruiserLbl->setFont("biting.ttf");
+    cruiserLbl->setPosition(Tools::Position(900, 600));
+    this->__cruiserLabel = &(*cruiserLbl);
+    this->addComponent(&(*cruiserLbl));
 }
 
 void SideBar::updateContext(Planet *planet)
@@ -99,9 +112,20 @@ void SideBar::updateContext(Planet *planet)
     this->getPanelHeader()->getMinerals()->setValue(std::to_string(planet->getMineralsRevenue()));
     this->getPanelHeader()->getGas()->setValue(std::to_string(planet->getGasRevenue()));
     
+    
+    this->__mineBtn->setTexture("mine");
+    this->__refineryBtn->setTexture("refinery");
+    this->__shipyardBtn->setTexture("shipyard");
+    this->__cruiserBtn->setTexture("cruiser");
+    
     this->getMineLabel()->setText(std::to_string(planet->getMines()) + " / " + std::to_string(planet->getMaxMines()));
     this->getRefineryLabel()->setText(std::to_string(planet->getRefineries()) + " / " + std::to_string(planet->getMaxRefineries()));
     this->getShipyardLabel()->setText(std::to_string(planet->getShipyards()) + " / " + std::to_string(planet->getMaxShipyards()));
+    
+    int nbShips = 0;
+    if (planet->getFleet() != NULL)
+        nbShips = planet->getFleet()->getShips().size();
+    this->__cruiserLabel->setText(std::to_string(nbShips));
     
 }
 

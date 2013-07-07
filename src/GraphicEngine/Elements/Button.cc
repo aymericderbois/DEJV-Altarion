@@ -54,7 +54,7 @@ namespace Graphic {
             
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->__isHover && (this->__active == 0)) {
                 this->__event->onCLick(this);
-                this->__active = 20;
+                this->__active = 30;
             }
             else
             {
