@@ -38,7 +38,7 @@ namespace Graphic {
             Tools::Position getSize() const;
         };
     }
-};
+}
 
 #endif	/* RESSOURCE_HH */
 

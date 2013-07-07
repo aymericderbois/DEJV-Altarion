@@ -91,8 +91,6 @@ void WorldAction::onCLick(EventLauncher *launcher, int buttonClick) {
 }
 
 void WorldAction::onHover(EventLauncher *launcher) {
-    Graphic::GUI::Button    *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
-    
     Planet  *planet = dynamic_cast<Planet*> (launcher);
     
     if (planet != 0) {
@@ -102,8 +100,6 @@ void WorldAction::onHover(EventLauncher *launcher) {
 }
 
 void WorldAction::onUnHover(EventLauncher *launcher) {
-    Graphic::GUI::Button *button = dynamic_cast<Graphic::GUI::Button*> (launcher);
-    
     Planet  *planet = dynamic_cast<Planet*> (launcher);
     
     if (planet != 0) {
