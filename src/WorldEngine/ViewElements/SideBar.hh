@@ -31,6 +31,16 @@ private:
     Graphic::GUI::Button      *__cruiserBtn;
     Graphic::GUI::Label       *__cruiserLabel;
     
+    Graphic::GUI::Ressource   *__minesOre;
+    Graphic::GUI::Ressource   *__minesGas;
+    Graphic::GUI::Ressource   *__refineriesOre;
+    Graphic::GUI::Ressource   *__refineriesGas;
+    Graphic::GUI::Ressource   *__shipyardOre;
+    Graphic::GUI::Ressource   *__shipyardGas;
+    Graphic::GUI::Ressource   *__shipOre;
+    Graphic::GUI::Ressource   *__shipGas;
+    
+    
 public:
     void setPanelHeader (Graphic::GUI::PanelHeader *__header);
     Graphic::GUI::PanelHeader* getPanelHeader();

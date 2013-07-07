@@ -16,7 +16,8 @@ void Ressource::draw(sf::RenderWindow* window)
     if (this->__value != "")
     {
         //  draw ressource icon
-        if (this->__icon != "") {
+        if (this->__icon != "")
+        {
             sf::Texture* texture    = Textures::getInstance().get(this->__icon);
             sf::Sprite  planetIcon;
             planetIcon.setTexture(*texture);

@@ -58,14 +58,14 @@ void SideBar::init() {
     
     Graphic::GUI::Ressource *minesOreCost = new Graphic::GUI::Ressource();
     minesOreCost->setPosition(Tools::Position(900, 270));
-    minesOreCost->setValue(std::to_string(MINE_COST_MINERALS));
     minesOreCost->setIcon("minerals");
+    this->__minesOre = &(*minesOreCost);
     this->addComponent(&(*minesOreCost));
     
     Graphic::GUI::Ressource *minesGasCost = new Graphic::GUI::Ressource();
     minesGasCost->setPosition(Tools::Position(900, 305));
-    minesGasCost->setValue(std::to_string(MINE_COST_GAS));
     minesGasCost->setIcon("gas");
+    this->__minesGas = &(*minesGasCost);
     this->addComponent(&(*minesGasCost));
     
     // REFINERIES
@@ -87,14 +87,14 @@ void SideBar::init() {
     
     Graphic::GUI::Ressource *refineriesOreCost = new Graphic::GUI::Ressource();
     refineriesOreCost->setPosition(Tools::Position(900, 380));
-    refineriesOreCost->setValue(std::to_string(REFINERY_COST_MINERALS));
     refineriesOreCost->setIcon("minerals");
+    this->__refineriesOre = &(*refineriesOreCost);
     this->addComponent(&(*refineriesOreCost));
     
     Graphic::GUI::Ressource *refineriesGasCost = new Graphic::GUI::Ressource();
     refineriesGasCost->setPosition(Tools::Position(900, 415));
-    refineriesGasCost->setValue(std::to_string(REFINERY_COST_GAS));
     refineriesGasCost->setIcon("gas");
+    this->__refineriesGas = &(*refineriesGasCost);
     this->addComponent(&(*refineriesGasCost));
     
     
@@ -117,14 +117,14 @@ void SideBar::init() {
     
     Graphic::GUI::Ressource *shipyardOreCost = new Graphic::GUI::Ressource();
     shipyardOreCost->setPosition(Tools::Position(900, 490));
-    shipyardOreCost->setValue(std::to_string(SHIPYARD_COST_MINERALS));
     shipyardOreCost->setIcon("minerals");
+    this->__shipyardOre = &(*shipyardOreCost);
     this->addComponent(&(*shipyardOreCost));
     
     Graphic::GUI::Ressource *shipyardGasCost = new Graphic::GUI::Ressource();
     shipyardGasCost->setPosition(Tools::Position(900, 525));
-    shipyardGasCost->setValue(std::to_string(SHIPYARD_COST_GAS));
     shipyardGasCost->setIcon("gas");
+    this->__shipyardGas = &(*shipyardGasCost);
     this->addComponent(&(*shipyardGasCost));
     
     
@@ -147,14 +147,14 @@ void SideBar::init() {
     
     Graphic::GUI::Ressource *cruiserOreCost = new Graphic::GUI::Ressource();
     cruiserOreCost->setPosition(Tools::Position(900, 600));
-    cruiserOreCost->setValue(std::to_string(CRUISER_COST_MINERALS));
     cruiserOreCost->setIcon("minerals");
+    this->__shipOre = &(*cruiserOreCost);
     this->addComponent(&(*cruiserOreCost));
     
     Graphic::GUI::Ressource *cruiserGasCost = new Graphic::GUI::Ressource();
     cruiserGasCost->setPosition(Tools::Position(900, 635));
-    cruiserGasCost->setValue(std::to_string(CRUISER_COST_GAS));
     cruiserGasCost->setIcon("gas");
+    this->__shipGas = &(*cruiserGasCost);
     this->addComponent(&(*cruiserGasCost));
 }
 
@@ -170,6 +170,19 @@ void SideBar::updateContext(Planet *planet)
     this->__refineryBtn->setTexture("refinery");
     this->__shipyardBtn->setTexture("shipyard");
     this->__cruiserBtn->setTexture("cruiser");
+    
+    this->__shipOre->setValue(std::to_string(CRUISER_COST_MINERALS));
+    this->__shipGas->setValue(std::to_string(CRUISER_COST_GAS));
+    
+    this->__minesOre->setValue(std::to_string(MINE_COST_MINERALS));
+    this->__minesGas->setValue(std::to_string(MINE_COST_GAS));
+    
+    this->__refineriesOre->setValue(std::to_string(REFINERY_COST_MINERALS));
+    this->__refineriesGas->setValue(std::to_string(REFINERY_COST_GAS));
+    
+    this->__shipyardOre->setValue(std::to_string(SHIPYARD_COST_MINERALS));
+    this->__shipyardGas->setValue(std::to_string(SHIPYARD_COST_GAS));
+    
     
     this->getMineLabel()->setText(std::to_string(planet->getMines()) + " / " + std::to_string(planet->getMaxMines()));
     this->getRefineryLabel()->setText(std::to_string(planet->getRefineries()) + " / " + std::to_string(planet->getMaxRefineries()));
