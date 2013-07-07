@@ -52,6 +52,7 @@ namespace World {
             // La flotte est arrivé
             if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
                 f->getPlanetDestination()->setFleet(f);
+                f->getPlanetDestination()->setOwner(&this->__player);
                 this->__fleetInMove.erase(std::remove(
                         __fleetInMove.begin(), __fleetInMove.end(), f), __fleetInMove.end());
                 f->moveEnded();
@@ -94,9 +95,9 @@ namespace World {
         for (int i = 0; i < nbPlanets; i++) {
             Tools::Position position;
             Planet *planet = new Planet();
-            
             if (isFirst)
             {
+                planet->setFleet(new Fleet());
                 planet->setOwner(&(this->__player));
                 planet->setBackground("planet-owned");
                 this->setCurrentPlanet(planet);

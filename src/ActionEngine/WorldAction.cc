@@ -15,9 +15,9 @@ void WorldAction::onCLick(EventLauncher *launcher, int buttonClick) {
     
     if (buttonClick == sf::Mouse::Left && planet != 0) {
         // set up contextual menu with clicked content
-        if ((planet->getOwner() != NULL) &&
-            (this->__world->getCurrentPlanet() != NULL) &&
-            (this->__world->getPlayer().getId() == planet->getOwner()->getId()))
+        if ((this->__world->getCurrentPlanet() != nullptr) &&
+            (this->__world->getCurrentPlanet()->getOwner() != nullptr) &&
+            (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
             this->__world->getCurrentPlanet()->setBackground("planet-owned");
         else
             this->__world->getCurrentPlanet()->setBackground("planet-enemy");
