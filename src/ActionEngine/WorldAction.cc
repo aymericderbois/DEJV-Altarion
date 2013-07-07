@@ -24,6 +24,7 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         std::cout << "building context for planet: " << planet->getName() << std::endl;
         this->__world->updateContext(planet);
         planet->setBackground("planet-selected");
+        button->fireSound();
     }
     
     if (button->getId() == "ADD_MINE")
@@ -31,8 +32,11 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
             (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
         {
-            this->__world->buyMine();
-            this->__world->updateContext(this->__world->getCurrentPlanet());
+            if (this->__world->buyMine())
+                button->fireSound();
+            else
+                button->fireSoundError();
+
         }
     }
     
@@ -41,8 +45,11 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
             (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
         {
-            this->__world->buyRefinery();
-            this->__world->updateContext(this->__world->getCurrentPlanet());
+            if (this->__world->buyRefinery())
+                button->fireSound();
+            else
+                button->fireSoundError();
+
         }
     }
     
@@ -51,8 +58,10 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
             (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
         {
-            this->__world->buyShipyard();
-            this->__world->updateContext(this->__world->getCurrentPlanet());
+            if (this->__world->buyShipyard())
+                button->fireSound();
+            else
+                button->fireSoundError();
         }
     }
     
@@ -61,8 +70,10 @@ void WorldAction::onCLick(EventLauncher *launcher) {
         if ((this->__world->getCurrentPlanet()->getOwner() != NULL) &&
             (this->__world->getPlayer().getId() == this->__world->getCurrentPlanet()->getOwner()->getId()))
         {
-            this->__world->buyShip();
-            this->__world->updateContext(this->__world->getCurrentPlanet());
+            if (this->__world->buyShip())
+                button->fireSound();
+            else
+                button->fireSoundError();
         }
     }
 }

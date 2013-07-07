@@ -1,11 +1,14 @@
 #include <stdlib.h>
 #include "Button.hh"
 #include "../../Tools/Textures.hh"
+#include "../../Tools/Sounds.hh"
 
 namespace Graphic {
     namespace GUI {
 
         Button::Button() {
+            this->setSound("button");
+            this->setSoundError("error");
         }
 
         Button::~Button() {
@@ -145,6 +148,28 @@ namespace Graphic {
             sf::Texture* texture = Textures::getInstance().get(this->__backgroundName);
             this->__background.setTexture(*texture);
             this->__background.setScale(0.5, 0.5);
+        }
+        
+        void Button::setSound(std::string sound) {
+            sf::SoundBuffer* buffer = Sounds::getInstance().get(sound);
+            this->__sound.setBuffer(*buffer);
+        }
+        
+        void Button::fireSound()
+        {
+            this->__sound.stop();
+            this->__sound.play();
+        }
+        
+        void Button::setSoundError(std::string sound) {
+            sf::SoundBuffer* buffer = Sounds::getInstance().get(sound);
+            this->__soundError.setBuffer(*buffer);
+        }
+        
+        void Button::fireSoundError()
+        {
+            this->__soundError.stop();
+            this->__soundError.play();
         }
     }
 

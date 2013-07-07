@@ -22,6 +22,7 @@ Planet::Planet() {
 
     this->setName(name.str());
     this->setTextureName(chooseTexture());
+    this->setSound("button");
 }
 
 Planet::~Planet() {

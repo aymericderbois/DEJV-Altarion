@@ -188,7 +188,7 @@ namespace World {
         this->__topbar.getShips()->setValue(std::to_string(this->__player.getNbShip()));
     }
     
-    void WorldEngine::buyMine()
+    bool WorldEngine::buyMine()
     {
         if (this->getCurrentPlanet()->getMaxMines() >
             this->getCurrentPlanet()->getMines())
@@ -203,13 +203,14 @@ namespace World {
                 this->__player.setNbOre(ore);
                 
                 this->getCurrentPlanet()->setMines(this->getCurrentPlanet()->getMines() + 1);
+                this->updateContext(this->getCurrentPlanet());
+                return true;
             }
         }
-        //this->updateTopBarValues();
-        this->updateContext(this->getCurrentPlanet());
+        return false;
     }
     
-    void WorldEngine::buyRefinery()
+    bool WorldEngine::buyRefinery()
     {
         if (this->getCurrentPlanet()->getMaxRefineries() >
             this->getCurrentPlanet()->getRefineries())
@@ -224,13 +225,16 @@ namespace World {
                 this->__player.setNbOre(ore);
                 
                 this->getCurrentPlanet()->setRefineries(this->getCurrentPlanet()->getRefineries() + 1);
+                
+                this->updateContext(this->getCurrentPlanet());
+                
+                return true;
             }
         }
-        //this->updateTopBarValues();
-        this->updateContext(this->getCurrentPlanet());
+        return false;
     }
     
-    void WorldEngine::buyShipyard()
+    bool WorldEngine::buyShipyard()
     {
         if (this->getCurrentPlanet()->getMaxShipyards() >
             this->getCurrentPlanet()->getShipyards())
@@ -245,13 +249,17 @@ namespace World {
                 this->__player.setNbOre(ore);
                 
                 this->getCurrentPlanet()->setShipyards(this->getCurrentPlanet()->getShipyards() + 1);
+                
+                this->updateContext(this->getCurrentPlanet());
+                
+                return true;
             }
         }
-        //this->updateTopBarValues();
-        this->updateContext(this->getCurrentPlanet());
+        
+        return false;
     }
     
-    void WorldEngine::buyShip()
+    bool WorldEngine::buyShip()
     {
     
         if (this->getCurrentPlanet()->getShipyards() > 0)
@@ -276,9 +284,12 @@ namespace World {
                 newShip.setStrength(CRUISER_STRENGTH);
             
                 this->getCurrentPlanet()->getFleet()->addShip(newShip);
+                
+                this->updateContext(this->getCurrentPlanet());
+                
+                return true;
             }
         }
-        //this->updateTopBarValues();
-        this->updateContext(this->getCurrentPlanet());
+        return false;
     }
 }

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../../Tools/Position.hh"
 #include "../../libs/Event/EventListener.hh"
 #include "../../libs/Event/EventLauncher.hh"
@@ -22,11 +23,17 @@ namespace Graphic {
             void setTexture(std::string);
             void setFont(std::string fontName);
             void setSpriteRatio(float ratio);
+            void setSound(std::string sound);
+            void setSoundError(std::string sound);
+            void fireSound();
+            void fireSoundError();
         private:
             int         __active = 0;
             // For text button
             sf::Text    __text;
             sf::Font    __font;
+            sf::Sound   __sound;
+            sf::Sound   __soundError;
             std::string __id;
 
             // For image button
