@@ -1,4 +1,5 @@
 #include "WorldEngine.hh"
+#include "../ActionEngine/MenuAction.hh"
 #include <math.h> 
 
 namespace World {
@@ -103,6 +104,56 @@ namespace World {
 
         this->__sidebar.getPanelHeader()->setMinerals(&(*mineralsRevenue));
         this->__sidebar.getPanelHeader()->addComponent(&(*mineralsRevenue));
+        
+        
+        // add buttons
+        Graphic::GUI::Button    *mineBtn = new Graphic::GUI::Button();
+        mineBtn->setTexture("mine");
+        mineBtn->setPosition(Tools::Position(768, 270));
+        mineBtn->setSpriteRatio(0.7);
+        mineBtn->setSize(Tools::Position(150, 100));
+        mineBtn->setEvent(new MenuAction());
+        this->__sidebar.setMineBtn(&(*mineBtn));
+        this->__sidebar.addComponent(&(*mineBtn));
+        
+        Graphic::GUI::Label    *mineLbl = new Graphic::GUI::Label();
+        mineLbl->setText("");
+        mineLbl->setFont("biting.ttf");
+        mineLbl->setPosition(Tools::Position(900, 270));
+        this->__sidebar.setMineLabel(&(*mineLbl));
+        this->__sidebar.addComponent(&(*mineLbl));
+        
+        Graphic::GUI::Button    *refineryBtn = new Graphic::GUI::Button();
+        refineryBtn->setTexture("refinery");
+        refineryBtn->setPosition(Tools::Position(768, 380));
+        refineryBtn->setSize(Tools::Position(150, 100));
+        refineryBtn->setSpriteRatio(0.7);
+        refineryBtn->setEvent(new MenuAction());
+        this->__sidebar.setRefineryBtn(&(*refineryBtn));
+        this->__sidebar.addComponent(&(*refineryBtn));
+        
+        Graphic::GUI::Label    *refineryLbl = new Graphic::GUI::Label();
+        refineryLbl->setText("");
+        refineryLbl->setFont("biting.ttf");
+        refineryLbl->setPosition(Tools::Position(900, 380));
+        this->__sidebar.setRefineryLabel(&(*refineryLbl));
+        this->__sidebar.addComponent(&(*refineryLbl));
+        
+        Graphic::GUI::Button    *shipyardBtn = new Graphic::GUI::Button();
+        shipyardBtn->setTexture("shipyard");
+        shipyardBtn->setPosition(Tools::Position(768, 490));
+        shipyardBtn->setSize(Tools::Position(150, 100));
+        shipyardBtn->setSpriteRatio(0.7);
+        shipyardBtn->setEvent(new MenuAction());
+        this->__sidebar.setShipyardBtn(&(*shipyardBtn));
+        this->__sidebar.addComponent(&(*shipyardBtn));
+        
+        Graphic::GUI::Label    *shipyardLbl = new Graphic::GUI::Label();
+        shipyardLbl->setText("");
+        shipyardLbl->setFont("biting.ttf");
+        shipyardLbl->setPosition(Tools::Position(900, 490));
+        this->__sidebar.setShipyardLabel(&(*shipyardLbl));
+        this->__sidebar.addComponent(&(*shipyardLbl));
     }
 
     void WorldEngine::generateWorld(int nbPlanets) {
@@ -164,11 +215,17 @@ namespace World {
         this->__fleetInMove.push_back(fleet);
     }
 
-    void WorldEngine::updateContext(Planet *planet) {
+    void WorldEngine::updateContext(Planet *planet)
+    {
         this->__sidebar.getPanelHeader()->setPlanetIcon(planet->getTextureName());
         this->__sidebar.getPanelHeader()->setPlanetName(planet->getName());
         this->__sidebar.getPanelHeader()->getMinerals()->setValue(std::to_string(planet->getMineralsRevenue()));
         this->__sidebar.getPanelHeader()->getGas()->setValue(std::to_string(planet->getGasRevenue()));
+        
+        this->__sidebar.getMineLabel()->setText(std::to_string(planet->getMines()) + " / " + std::to_string(planet->getMaxMines()));
+        this->__sidebar.getRefineryLabel()->setText(std::to_string(planet->getRefineries()) + " / " + std::to_string(planet->getMaxRefineries()));
+        this->__sidebar.getShipyardLabel()->setText(std::to_string(planet->getShipyards()) + " / " + std::to_string(planet->getMaxShipyards()));
+        
     }
 
     void WorldEngine::setPlayer(Player __player) {

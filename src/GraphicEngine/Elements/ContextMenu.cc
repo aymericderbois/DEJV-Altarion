@@ -82,5 +82,67 @@ namespace Graphic {
         {
             return this->__header;
         }
+        
+        void ContextMenu::setMineBtn (Button *btn)
+        {
+            this->__mineBtn = btn;
+        }
+        
+        Button* ContextMenu::getMineBtn()
+        {
+            return this->__mineBtn;
+        }
+        
+        void ContextMenu::setRefineryBtn (Button *btn)
+        {
+            this->__refineryBtn = btn;
+        }
+        
+        Button* ContextMenu::getRefineryBtn()
+        {
+            return this->__refineryBtn;
+        }
+        
+        void ContextMenu::setShipyardBtn (Button *btn)
+        {
+            this->__shipyardBtn = btn;
+        }
+        
+        Button* ContextMenu::getShipyardBtn()
+        {
+            return this->__shipyardBtn;
+        }
+        
+        
+        void ContextMenu::setMineLabel (Label *btn)
+        {
+            this->__mineLabel = btn;
+        }
+        
+        Label* ContextMenu::getMineLabel()
+        {
+            return this->__mineLabel;
+        }
+        
+        void ContextMenu::setRefineryLabel (Label *btn)
+        {
+            this->__refineryLabel = btn;
+        }
+        
+        Label* ContextMenu::getRefineryLabel()
+        {
+            return this->__refineryLabel;
+        }
+        
+        void ContextMenu::setShipyardLabel (Label *btn)
+        {
+            this->__shipyardLabel = btn;
+        }
+        
+        Label* ContextMenu::getShipyardLabel()
+        {
+            return this->__shipyardLabel;
+        }
+        
     }
 }

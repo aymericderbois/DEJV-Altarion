@@ -53,6 +53,24 @@ public:
     
     Fleet*          getFleet();
     void            setFleet(Fleet* fleet);
+    
+    int             getMines() { return this->__mines; }
+    void            setMines(int mines) { this->__mines = mines; }
+    
+    int             getRefineries() { return this->__refineries; }
+    void            setRefineries(int refineries)  { this->__refineries = refineries; }
+
+    int             getShipyards() { return this->__shipyards; }
+    void            setShipyards(int shipyards) { this->__shipyards = shipyards; }
+
+    int             getMaxMines() { return this->__max_mines; }
+    void            setMaxMines(int maxMines) { this->__max_mines = maxMines; }
+
+    int             getMaxRefineries() { return this->__max_refineries; }
+    void            setMaxRefineries(int maxRefineries) { this->__max_refineries = maxRefineries; }
+    
+    int             getMaxShipyards() { return this->__max_shipyards; }
+    void            setMaxShipyards(int maxShipyards) { this->__max_shipyards = maxShipyards; }
 };
 
 std::string     chooseTexture();
