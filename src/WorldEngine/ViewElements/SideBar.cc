@@ -39,7 +39,7 @@ void SideBar::init() {
     this->getPanelHeader()->addComponent(&(*mineralsRevenue));
     
     
-    // add buttons
+    // MINES
     Graphic::GUI::Button    *mineBtn = new Graphic::GUI::Button();
     mineBtn->setPosition(Tools::Position(768, 270));
     mineBtn->setSpriteRatio(0.7);
@@ -52,10 +52,23 @@ void SideBar::init() {
     Graphic::GUI::Label    *mineLbl = new Graphic::GUI::Label();
     mineLbl->setText("");
     mineLbl->setFont("biting.ttf");
-    mineLbl->setPosition(Tools::Position(900, 270));
+    mineLbl->setPosition(Tools::Position(788, 330));
     this->setMineLabel(&(*mineLbl));
     this->addComponent(&(*mineLbl));
     
+    Graphic::GUI::Ressource *minesOreCost = new Graphic::GUI::Ressource();
+    minesOreCost->setPosition(Tools::Position(900, 270));
+    minesOreCost->setValue(std::to_string(MINE_COST_MINERALS));
+    minesOreCost->setIcon("minerals");
+    this->addComponent(&(*minesOreCost));
+    
+    Graphic::GUI::Ressource *minesGasCost = new Graphic::GUI::Ressource();
+    minesGasCost->setPosition(Tools::Position(900, 305));
+    minesGasCost->setValue(std::to_string(MINE_COST_GAS));
+    minesGasCost->setIcon("gas");
+    this->addComponent(&(*minesGasCost));
+    
+    // REFINERIES
     Graphic::GUI::Button    *refineryBtn = new Graphic::GUI::Button();
     refineryBtn->setPosition(Tools::Position(768, 380));
     refineryBtn->setSize(Tools::Position(150, 100));
@@ -68,10 +81,24 @@ void SideBar::init() {
     Graphic::GUI::Label    *refineryLbl = new Graphic::GUI::Label();
     refineryLbl->setText("");
     refineryLbl->setFont("biting.ttf");
-    refineryLbl->setPosition(Tools::Position(900, 380));
+    refineryLbl->setPosition(Tools::Position(788, 440));
     this->setRefineryLabel(&(*refineryLbl));
     this->addComponent(&(*refineryLbl));
     
+    Graphic::GUI::Ressource *refineriesOreCost = new Graphic::GUI::Ressource();
+    refineriesOreCost->setPosition(Tools::Position(900, 380));
+    refineriesOreCost->setValue(std::to_string(REFINERY_COST_MINERALS));
+    refineriesOreCost->setIcon("minerals");
+    this->addComponent(&(*refineriesOreCost));
+    
+    Graphic::GUI::Ressource *refineriesGasCost = new Graphic::GUI::Ressource();
+    refineriesGasCost->setPosition(Tools::Position(900, 415));
+    refineriesGasCost->setValue(std::to_string(REFINERY_COST_GAS));
+    refineriesGasCost->setIcon("gas");
+    this->addComponent(&(*refineriesGasCost));
+    
+    
+    // SHIPYARDS
     Graphic::GUI::Button    *shipyardBtn = new Graphic::GUI::Button();
     shipyardBtn->setPosition(Tools::Position(768, 490));
     shipyardBtn->setSize(Tools::Position(150, 100));
@@ -84,10 +111,24 @@ void SideBar::init() {
     Graphic::GUI::Label    *shipyardLbl = new Graphic::GUI::Label();
     shipyardLbl->setText("");
     shipyardLbl->setFont("biting.ttf");
-    shipyardLbl->setPosition(Tools::Position(900, 490));
+    shipyardLbl->setPosition(Tools::Position(788, 555));
     this->setShipyardLabel(&(*shipyardLbl));
     this->addComponent(&(*shipyardLbl));
     
+    Graphic::GUI::Ressource *shipyardOreCost = new Graphic::GUI::Ressource();
+    shipyardOreCost->setPosition(Tools::Position(900, 490));
+    shipyardOreCost->setValue(std::to_string(SHIPYARD_COST_MINERALS));
+    shipyardOreCost->setIcon("minerals");
+    this->addComponent(&(*shipyardOreCost));
+    
+    Graphic::GUI::Ressource *shipyardGasCost = new Graphic::GUI::Ressource();
+    shipyardGasCost->setPosition(Tools::Position(900, 525));
+    shipyardGasCost->setValue(std::to_string(SHIPYARD_COST_GAS));
+    shipyardGasCost->setIcon("gas");
+    this->addComponent(&(*shipyardGasCost));
+    
+    
+    // CRUISERS
     Graphic::GUI::Button    *cruiserBtn = new Graphic::GUI::Button();
     cruiserBtn->setPosition(Tools::Position(768, 600));
     cruiserBtn->setSize(Tools::Position(150, 100));
@@ -100,9 +141,21 @@ void SideBar::init() {
     Graphic::GUI::Label    *cruiserLbl = new Graphic::GUI::Label();
     cruiserLbl->setText("");
     cruiserLbl->setFont("biting.ttf");
-    cruiserLbl->setPosition(Tools::Position(900, 600));
+    cruiserLbl->setPosition(Tools::Position(788, 650));
     this->__cruiserLabel = &(*cruiserLbl);
     this->addComponent(&(*cruiserLbl));
+    
+    Graphic::GUI::Ressource *cruiserOreCost = new Graphic::GUI::Ressource();
+    cruiserOreCost->setPosition(Tools::Position(900, 600));
+    cruiserOreCost->setValue(std::to_string(CRUISER_COST_MINERALS));
+    cruiserOreCost->setIcon("minerals");
+    this->addComponent(&(*cruiserOreCost));
+    
+    Graphic::GUI::Ressource *cruiserGasCost = new Graphic::GUI::Ressource();
+    cruiserGasCost->setPosition(Tools::Position(900, 635));
+    cruiserGasCost->setValue(std::to_string(CRUISER_COST_GAS));
+    cruiserGasCost->setIcon("gas");
+    this->addComponent(&(*cruiserGasCost));
 }
 
 void SideBar::updateContext(Planet *planet)

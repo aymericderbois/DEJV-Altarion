@@ -44,7 +44,6 @@ public:
     void setShipyardBtn (Graphic::GUI::Button *btn);
     Graphic::GUI::Button* getShipyardBtn();
     
-    
     void setMineLabel (Graphic::GUI::Label *btn);
     Graphic::GUI::Label* getMineLabel();
     
