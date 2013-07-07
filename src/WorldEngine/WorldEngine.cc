@@ -49,7 +49,7 @@ namespace World {
             if (pos->getY() != dest->getY())
                 pos->setY(pos->getY() + directionY);
             
-            // La flotte est arrivé
+            // La flotte est arrivée
             if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
                 f->getPlanetDestination()->setFleet(f);
                 f->getPlanetDestination()->setOwner(&this->__player);
