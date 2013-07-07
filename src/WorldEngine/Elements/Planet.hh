@@ -35,6 +35,8 @@ private:
     std::string     __name;
     std::string     __textureName;
     
+    std::string     __backgroundName;
+    
 public:
     std::string     getName();
     void            setName(std::string name);

@@ -7,11 +7,13 @@
 #include "../GraphicEngine/Elements/Label.hh"
 #include "../GraphicEngine/Elements/ContextMenu.hh"
 #include "../GraphicEngine/Elements/Ressource.hh"
+
 #include "Elements/Planet.hh"
 #include "../ActionEngine/WorldAction.hh"
 #include "../Tools/Position.hh"
 #include "Player.hh"
 #include "ViewElements/TopBar.hh"
+#include "ViewElements/SideBar.hh"
 
 namespace World
 {
@@ -29,9 +31,10 @@ namespace World
         void addFleetInMove(Fleet* fleet);
     private:
         TopBar __topbar;
-        Graphic::GUI::ContextMenu __sidebar;
+        SideBar __sidebar;
         Player __player;
         WorldAction __action;
+        Planet*              __currentPlanet;
         std::vector<Planet*> __planets;
         std::vector<Fleet*> __fleetInMove;
     public:
@@ -39,6 +42,8 @@ namespace World
         void setPlayer(Player __player);
         Player getPlayer() const;
         void updateTopBarValues();
+        Planet* getCurrentPlanet() { return this->__currentPlanet;}
+        void setCurrentPlanet(Planet* planet) { this->__currentPlanet = planet;}
     };
 }
 #endif // WORLDENGINE_H

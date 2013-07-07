@@ -16,9 +16,15 @@ namespace Graphic {
             this->setFont("biting.ttf");
             this->setTextSize(50);
             this->setText("");
+            this->setBackground("");
         }
 
         void Button::draw(sf::RenderWindow* window) {
+            if (this->__backgroundName != "")
+            {
+                window->draw(this->__background);
+            }
+            
             if (this->__text.getString() != "") {
                 window->draw(this->__text);
             } else {
@@ -66,6 +72,7 @@ namespace Graphic {
             this->__position = position;
             this->__text.setPosition(position.getX(), position.getY());
             this->__sprite.setPosition(position.getX(), position.getY());
+            this->__background.setPosition(position.getX() - 5, position.getY() - 5);
         }
 
         void Button::setTexture(std::string name) {
@@ -123,6 +130,14 @@ namespace Graphic {
 
         Tools::Position Button::getSize() const {
             return __size;
+        }
+        
+        void Button::setBackground(std::string bgname)
+        {
+            this->__backgroundName = bgname;
+            sf::Texture* texture = Textures::getInstance().get(this->__backgroundName);
+            this->__background.setTexture(*texture);
+            this->__background.setScale(0.5, 0.5);
         }
     }
 

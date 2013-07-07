@@ -30,6 +30,8 @@ namespace Graphic {
 
             // For image button
             sf::Sprite __sprite;
+            sf::Sprite __background;
+            std::string __backgroundName;
             
             Tools::Position __position;
             Tools::Position __size;
@@ -51,6 +53,8 @@ namespace Graphic {
             std::string getId() const;
             void setSize(Tools::Position __size);
             Tools::Position getSize() const;
+            
+            void setBackground(std::string bgname);
         };
     }
 }
