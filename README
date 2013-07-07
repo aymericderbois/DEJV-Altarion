@@ -1,0 +1,22 @@
+ALTARION: UNIVERSAL SUPREMACY
+
+DISCLAIMER:
+	this game has been developed and tested on Linux and Mac OS X systems,
+	you might compile it for windows but at your own risks.
+	
+BUILD:
+
+	Altarion depends on SFML 2.0, you'll need to install it before you go further.
+	
+	Linux/Mac OS:
+		$> cmake -G "Unix makefiles"
+		$> make
+		$> ./UniversalSupremacy
+	
+	Mac OS (Xcode):
+		$> cmake -G Xcode
+		$> open UniversalSupremacy.xcodeproj
+		then click "build & run" (the first time will fail at linking and the second will succeed)
+		
+	In both case, we highly recommand you use cmake in a separate directory, 
+	if so, please also copy the "ressources" directory to your target directory.
