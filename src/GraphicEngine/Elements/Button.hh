@@ -23,6 +23,7 @@ namespace Graphic {
             void setFont(std::string fontName);
             void setSpriteRatio(float ratio);
         private:
+            int         __active = 0;
             // For text button
             sf::Text    __text;
             sf::Font    __font;

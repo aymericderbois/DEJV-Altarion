@@ -54,8 +54,6 @@ void WorldAction::onCLick(EventLauncher *launcher) {
             this->__world->updateContext(this->__world->getCurrentPlanet());
         }
     }
-
-    std::cout << "On click" << std::endl;
 }
 
 void WorldAction::onHover(EventLauncher *launcher) {
@@ -66,8 +64,6 @@ void WorldAction::onHover(EventLauncher *launcher) {
     if (planet != 0) {
         planet->setBackground("planet-selected");
     }
-    
-    std::cout << "On hover" << std::endl;
 
 }
 
@@ -86,8 +82,6 @@ void WorldAction::onUnHover(EventLauncher *launcher) {
                 planet->setBackground("planet-enemy");
         }
     }
-    
-    std::cout << "On unhover" << std::endl;
 
 }
 
