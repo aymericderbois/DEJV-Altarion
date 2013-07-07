@@ -37,7 +37,8 @@ void WorldAction::onCLick(EventLauncher *launcher, int buttonClick) {
                 << planet->getName() << std::endl;
         
         if ((f != NULL) &&
-            (this->__world->getPlayer().getId() == __world->getCurrentPlanet()->getOwner()->getId())) {
+            ((__world->getCurrentPlanet()->getOwner() != NULL) &&
+             (this->__world->getPlayer().getId() == __world->getCurrentPlanet()->getOwner()->getId()))) {
             
             __world->getCurrentPlanet()->setFleet(NULL);
             this->__world->addFleetInMove(f);

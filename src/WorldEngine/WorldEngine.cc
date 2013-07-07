@@ -52,16 +52,34 @@ namespace World {
             // La flotte est arrivée
             if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
                 
-                if ((f->getPlanetDestination()->getFleet() == NULL) ||
-                    ((f->getPlanetDestination()->getFleet() != NULL) && (f->getPlanetDestination()->getFleet()->getShips().size() > 0)))
+                //planete nous appartient && flotte presente ==> merge fleets
+                Planet *destination = f->getPlanetDestination();
+                if (destination->getOwner() != NULL) // planete a nous
                 {
-                    f->getPlanetDestination()->setFleet(f);
-                    f->getPlanetDestination()->setOwner(&this->__player);
-                    f->getPlanetDestination()->setBackground("planet-owned");
+                    if (destination->getFleet() != NULL) // merge fleets
+                    {
+                        for (auto ship: destination->getFleet()->getShips()) {
+                            f->addShip(ship);
+                            f->getPlanetDestination()->setFleet(f);
+                        }
+                    }
+                    else
+                    {
+                        f->getPlanetDestination()->setFleet(f);
+                    }
                 }
                 else
                 {
-                    if ((f->getPlanetDestination()->getFleet()->getShips().size()) < f->getShips().size())
+                    if (destination->getFleet() != NULL) // bastooon
+                    {
+                        if (destination->getFleet()->getShips().size() < f->getShips().size())
+                        {
+                            f->getPlanetDestination()->setFleet(f);
+                            f->getPlanetDestination()->setOwner(&this->__player);
+                            f->getPlanetDestination()->setBackground("planet-owned");
+                        }
+                    }
+                    else // new paradise
                     {
                         f->getPlanetDestination()->setFleet(f);
                         f->getPlanetDestination()->setOwner(&this->__player);
@@ -69,6 +87,7 @@ namespace World {
                     }
                 }
                 
+                this->updateContext(this->__currentPlanet);
                 this->__fleetInMove.erase(std::remove(
                         __fleetInMove.begin(), __fleetInMove.end(), f), __fleetInMove.end());
                 f->moveEnded();
@@ -213,6 +232,7 @@ namespace World {
                     nbShips += planet->getFleet()->getShips().size();
             }
         }
+    
         
         this->__player.setNbPlanets(nbPlanets);
         this->__player.setNbShip(nbShips);
