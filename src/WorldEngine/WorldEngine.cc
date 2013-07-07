@@ -53,6 +53,7 @@ namespace World {
             if (pos->getX() == dest->getX() && pos->getY() == dest->getY()) {
                 f->getPlanetDestination()->setFleet(f);
                 f->getPlanetDestination()->setOwner(&this->__player);
+                f->getPlanetDestination()->setBackground("planet-owned");
                 this->__fleetInMove.erase(std::remove(
                         __fleetInMove.begin(), __fleetInMove.end(), f), __fleetInMove.end());
                 f->moveEnded();
