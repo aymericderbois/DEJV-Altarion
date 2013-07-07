@@ -18,7 +18,6 @@ public:
     void moveEnded();
 private:
     std::list<Ship> __ships;
-    Tools::Position* __departure;
     Tools::Position* __destination;
     Tools::Position* __current;
     Planet* __planetDestination;
@@ -35,9 +34,6 @@ public:
         return __destination;
     }
 
-    Tools::Position* getDeparture() {
-        return __departure;
-    }
     void setPlanetDestination(Planet* __planet);
     Planet* getPlanetDestination();
     

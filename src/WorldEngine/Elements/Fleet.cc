@@ -20,14 +20,12 @@ void Fleet::move() {
 
 }
 void Fleet::moveEnded() {
-    delete this->__departure;
     delete this->__current;
     delete this->__destination;
     this->__planetDestination = nullptr;
 }
 
 void Fleet::setMoving(Planet* planetDestination, Tools::Position from, Tools::Position to) {
-    this->__departure = new Tools::Position(from.getX(), from.getY());
     this->__current = new Tools::Position(from.getX(), from.getY());
     this->__destination = new Tools::Position(to.getX(), to.getY());
     this->__planetDestination = planetDestination;

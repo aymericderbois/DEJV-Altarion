@@ -30,7 +30,10 @@ void WorldAction::onCLick(EventLauncher *launcher, int buttonClick) {
     
     // Click droit sur une planete. On envoie les troupes
     if (buttonClick == sf::Mouse::Right && planet != 0) {
-        Fleet* f = planet->getFleet();
+        Fleet* f = __world->getCurrentPlanet()->getFleet();
+        std::cout << "send ship from : " 
+                << __world->getCurrentPlanet()->getName() << " to "
+                << planet->getName() << std::endl;
         if (f != nullptr) {
             planet->setFleet(nullptr);
             this->__world->addFleetInMove(f);
